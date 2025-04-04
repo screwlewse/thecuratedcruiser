@@ -1,1 +1,2 @@
-# thecuratedcruiser
+# curatedcruiser
+My Business website
