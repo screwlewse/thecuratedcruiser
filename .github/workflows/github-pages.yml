@@ -1,4 +1,4 @@
-name: GitHub Pages Deployment
+name: Process Images and Deploy GitHub Pages
 
 on:
   push:
@@ -10,12 +10,20 @@ on:
     branches: [ main ]
   workflow_dispatch:     # Allow manual triggering
 
+# Add proper permissions
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   process-images:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for all branches and tags
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -90,25 +98,45 @@ jobs:
           # Run the image processing script
           node process-images.js
 
-      - name: Commit changes
+      - name: Commit changes (if any)
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add images/processed
-          git commit -m "Generate responsive images" || echo "No changes to commit"
-          git push
 
-  # This job ensures GitHub Pages deployment only runs after images are processed
-  trigger-pages-deployment:
+          # Pull the latest changes to avoid rejection
+          git pull origin main --rebase
+
+          # Add the processed images to git
+          git add images/processed/
+
+          # Check if there are changes to commit
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit"
+          else
+            git commit -m "Generate responsive images"
+            # Use --force-with-lease for safer force pushing
+            git push --force-with-lease
+          fi
+
+  # Use GitHub's official Pages deployment action
+  deploy-pages:
     needs: process-images
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Create empty commit to trigger pages-build-deployment
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit --allow-empty -m "Trigger GitHub Pages deployment"
-          git push
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
