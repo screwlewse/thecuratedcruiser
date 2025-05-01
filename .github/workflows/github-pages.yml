@@ -103,19 +103,21 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # Pull the latest changes to avoid rejection
-          git pull origin main --rebase
-
-          # Add the processed images to git
-          git add images/processed/
+          # First stage all changes
+          git add -A
 
           # Check if there are changes to commit
-          if git diff-index --quiet HEAD --; then
+          if git diff --staged --quiet; then
             echo "No changes to commit"
           else
+            # Commit the changes
             git commit -m "Generate responsive images"
-            # Use --force-with-lease for safer force pushing
-            git push --force-with-lease
+
+            # Pull with rebase strategy
+            git pull --rebase origin main
+
+            # Push changes
+            git push
           fi
 
   # Use GitHub's official Pages deployment action
