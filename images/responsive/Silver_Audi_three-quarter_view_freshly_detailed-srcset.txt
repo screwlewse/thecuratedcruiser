@@ -1,0 +1,10 @@
+
+  <!-- Sample responsive image HTML for images/Silver_Audi_three-quarter_view_freshly_detailed.jpeg -->
+  <img
+    src="responsive/Silver_Audi_three-quarter_view_freshly_detailed-400w.jpeg"
+    srcset="responsive/Silver_Audi_three-quarter_view_freshly_detailed-400w.jpeg 400w, responsive/Silver_Audi_three-quarter_view_freshly_detailed-800w.jpeg 800w, responsive/Silver_Audi_three-quarter_view_freshly_detailed-1200w.jpeg 1200w, responsive/Silver_Audi_three-quarter_view_freshly_detailed-1600w.jpeg 1600w, responsive/Silver_Audi_three-quarter_view_freshly_detailed-2000w.jpeg 2000w, responsive/Silver_Audi_three-quarter_view_freshly_detailed-2048w.jpeg 2048w"
+    sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+    alt="Description of image"
+    loading="lazy"
+  >
+  
