@@ -46,47 +46,7 @@
     </script>
 
     <!-- Custom CSS -->
-    <style>
-        /* Custom styling beyond Tailwind */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #00B4D8;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .service-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
-        }
-
-        /* Hide Square booking button styles if needed */
-        .sqb-button {
-            font-family: 'Josefin Sans', sans-serif !important;
-            background-color: #00B4D8 !important;
-            color: white !important;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="bg-dark text-white font-josefin">

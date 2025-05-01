@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add click event to each link
     navLinks.forEach(link => {
+        const topBufferHeight = 50;
         link.addEventListener('click', function(e) {
             e.preventDefault();
 
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (targetSection) {
                 // Calculate position to scroll to
-                const targetPosition = targetSection.offsetTop;
+                const targetPosition = targetSection.offsetTop - topBufferHeight;
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
 
