@@ -1,0 +1,88 @@
+/* Curated Cruiser Custom CSS */
+
+/* Basic smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation styling */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #00B4D8;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Service card hover effects */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
+}
+
+/* Square booking button styles overrides if needed */
+.sqb-button {
+    font-family: 'Josefin Sans', sans-serif !important;
+    background-color: #00B4D8 !important;
+    color: white !important;
+}
+
+/* Increased section height for desktop displays */
+@media (min-width: 1024px) {
+    section {
+        min-height: 100vh; /* Make each section at minimum the height of the viewport */
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
+
+/* Section animation styles */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Navbar scroll transition */
+#navbar {
+    transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+#navbar.scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Pricing tabs styling */
+.tab-btn {
+    transition: background-color 0.3s ease;
+}
+
+.tab-content {
+    transition: opacity 0.3s ease;
+}
+
+.tab-content.hidden {
+    display: none;
+}
