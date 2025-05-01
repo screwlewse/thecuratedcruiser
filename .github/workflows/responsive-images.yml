@@ -1,0 +1,221 @@
+name: Optimize and Generate Responsive Images
+
+on:
+  # Run on pull requests that include image files
+  pull_request:
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
+
+  # Run when images are directly pushed to main/master
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  responsive-images:
+    name: Generate Responsive Images
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      # Install dependencies (ImageMagick and Node.js)
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+
+      - name: Install Node.js dependencies
+        run: |
+          npm init -y
+          npm install sharp
+
+      # Create a script that will process the images
+      - name: Create Image Processing Script
+        run: |
+          cat > process-images.js << 'EOL'
+          const fs = require('fs');
+          const path = require('path');
+          const { execSync } = require('child_process');
+          const sharp = require('sharp');
+
+          // Configure responsive image sizes
+          const SIZES = [400, 800, 1200, 1600, 2000];
+          const QUALITY = 80;
+
+          // Helper function to create directory if it doesn't exist
+          const ensureDirectoryExists = (directory) => {
+            if (!fs.existsSync(directory)) {
+              fs.mkdirSync(directory, { recursive: true });
+            }
+          };
+
+          // Process images function
+          async function processImage(imagePath) {
+            // Skip if not an image
+            const ext = path.extname(imagePath).toLowerCase();
+            if (!['.jpg', '.jpeg', '.png', '.webp'].includes(ext)) {
+              return;
+            }
+
+            console.log(`Processing: ${imagePath}`);
+
+            const dir = path.dirname(imagePath);
+            const filename = path.basename(imagePath, ext);
+            const outputDir = path.join(dir, 'responsive');
+            ensureDirectoryExists(outputDir);
+
+            // Get original image dimensions
+            const metadata = await sharp(imagePath).metadata();
+            const { width: originalWidth } = metadata;
+
+            // Filter sizes that don't exceed the original image width
+            const validSizes = SIZES.filter(size => size <= originalWidth);
+
+            // If original is smaller than smallest target size, just include original
+            if (validSizes.length === 0) {
+              validSizes.push(originalWidth);
+            }
+
+            // Always include original size if it's larger than largest target size
+            if (originalWidth > Math.max(...SIZES) && !validSizes.includes(originalWidth)) {
+              validSizes.push(originalWidth);
+            }
+
+            // Sort sizes
+            validSizes.sort((a, b) => a - b);
+
+            // Generate responsive images
+            const resizedImages = [];
+
+            for (const width of validSizes) {
+              const outputFilename = `${filename}-${width}w${ext}`;
+              const outputPath = path.join(outputDir, outputFilename);
+
+              await sharp(imagePath)
+                .resize(width)
+                .jpeg({ quality: QUALITY, progressive: true })
+                .toFile(outputPath);
+
+              console.log(`Created: ${outputPath} (${width}px wide)`);
+              resizedImages.push({ path: outputPath, width });
+            }
+
+            // Create srcset string for documentation
+            const relativePaths = resizedImages.map(img => {
+              const relativePath = path.join('responsive', path.basename(img.path));
+              return `${relativePath} ${img.width}w`;
+            });
+
+            const srcsetString = relativePaths.join(', ');
+            const smallestSize = validSizes[0];
+            const fallbackImage = path.join('responsive', `${filename}-${smallestSize}w${ext}`);
+
+            // Generate sample HTML
+            const sampleHtml = `
+            <!-- Sample responsive image HTML for ${imagePath} -->
+            <img
+              src="${fallbackImage}"
+              srcset="${srcsetString}"
+              sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+              alt="Description of image"
+              loading="lazy"
+            >
+            `;
+
+            // Save documentation
+            const docsPath = path.join(outputDir, `${filename}-srcset.txt`);
+            fs.writeFileSync(docsPath, sampleHtml);
+
+            return {
+              originalPath: imagePath,
+              responsiveImages: resizedImages,
+              srcset: srcsetString,
+              fallback: fallbackImage
+            };
+          }
+
+          // Find all images in the repository
+          function findImages(directory) {
+            const results = [];
+
+            const items = fs.readdirSync(directory, { withFileTypes: true });
+
+            for (const item of items) {
+              const fullPath = path.join(directory, item.name);
+
+              // Skip responsive directories to avoid processing already processed images
+              if (item.isDirectory()) {
+                if (item.name !== 'responsive' && item.name !== 'node_modules' && !item.name.startsWith('.')) {
+                  results.push(...findImages(fullPath));
+                }
+              } else {
+                const ext = path.extname(item.name).toLowerCase();
+                if (['.jpg', '.jpeg', '.png', '.webp'].includes(ext)) {
+                  results.push(fullPath);
+                }
+              }
+            }
+
+            return results;
+          }
+
+          // Main function
+          async function main() {
+            const images = findImages('.');
+            console.log(`Found ${images.length} images to process`);
+
+            for (const imagePath of images) {
+              await processImage(imagePath);
+            }
+
+            console.log('All images processed successfully');
+          }
+
+          main().catch(error => {
+            console.error('Error processing images:', error);
+            process.exit(1);
+          });
+          EOL
+
+      # Run the image processing script
+      - name: Process Images
+        run: node process-images.js
+
+      # Commit changes
+      - name: Commit Responsive Images
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+
+          # Only commit if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Generate responsive images and srcset [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
