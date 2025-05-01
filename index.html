@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,7 +154,6 @@
                     alt="Hero image of a freshly detailed car. The paint reflects the clouds"
                     class="rounded-lg shadow-2xl"
                     loading="lazy">
-                <!-- <img src="images/Silver_Audi_three-quarter_view_freshly_detailed.jpeg" alt="Freshly detailed luxury car" class="rounded-lg shadow-2xl"> -->
             </div>
         </div>
     </section>
@@ -226,7 +226,30 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-12 md:mb-0">
-                    <img src="images/about-image.jpg" alt="Car detailing process" class="rounded-lg shadow-xl">
+                    <img
+                        src="images/src/white_hyundia_santafe_front_view_before.jpeg"
+                        srcset="images/processed/white_hyundia_santafe_front_view_before-small.jpeg 400w,
+                                images/processed/white_hyundia_santafe_front_view_before-medium.jpeg 800w,
+                                images/processed/white_hyundia_santafe_front_view_before-large.jpeg 1200w"
+                        sizes="(max-width: 600px) 400px,
+                                (max-width: 1200px) 800px,
+                                1200px"
+                        alt="Front view of white Hyundai Santa Fe before detailing"
+                        class="rounded-lg shadow-2xl"
+                        loading="lazy"
+                    >
+                    <img
+                        src="images/src/white_hyundia_santafe_front_view_after.jpeg"
+                        srcset="images/processed/white_hyundia_santafe_front_view_after-small.jpeg 400w,
+                                images/processed/white_hyundia_santafe_front_view_after-medium.jpeg 800w,
+                                images/processed/white_hyundia_santafe_front_view_after-large.jpeg 1200w"
+                        sizes="(max-width: 600px) 400px,
+                                (max-width: 1200px) 800px,
+                                1200px"
+                        alt="Front view of white Hyundai Santa Fe after detailing"
+                        class="rounded-lg shadow-2xl"
+                        loading="lazy"
+                    >
                 </div>
                 <div class="md:w-1/2 md:pl-12">
                     <h2 class="font-cinzel text-3xl md:text-4xl mb-8">About <span class="text-accent">Curated Cruiser</span></h2>
@@ -426,18 +449,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Full Detail Tab Content -->
-            <div id="full-content" class="tab-content hidden">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Standard Size -->
-                    <div class="bg-dark rounded-lg overflow-hidden transition-transform duration-300 hover:-translate-y-2">
-                        <div class="p-8">
-                            <h3 class="font-cinzel text-2xl mb-2 text-center">Compact Cruiser</h3>
-                            <p class="text-center text-lightgray mb-4">Sedans, Coupes, Hatchbacks</p>
-                            <div class="text-center mb-6">
-                                <span class="text-4xl font-bold">$179</span>
-                            </div>
-                            <ul class="space-y-3 mb-8">
-                                <li class="flex items-start">
-                                    <svg class="w-5 h-5 text-accent mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+    <!-- Contact and Booking sections would go here -->
+
+    <!-- Footer would go here -->
+
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
