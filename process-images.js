@@ -1,142 +1,52 @@
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 const sharp = require('sharp');
 
-// Configure responsive image sizes
-const SIZES = [400, 800, 1200, 1600, 2000];
-const QUALITY = 80;
+const sourceDir = 'images/src';
+const outputDir = 'images/processed';
 
-// Helper function to create directory if it doesn't exist
-const ensureDirectoryExists = (directory) => {
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory, { recursive: true });
-  }
-};
+// Make sure output directory exists
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
 
-// Process images function
-async function processImage(imagePath) {
-  // Skip if not an image
-  const ext = path.extname(imagePath).toLowerCase();
-  if (!['.jpg', '.jpeg', '.png', '.webp'].includes(ext)) {
-    return;
-  }
+// Get all image files from the source directory
+if (fs.existsSync(sourceDir)) {
+  const imageFiles = fs.readdirSync(sourceDir)
+    .filter(file => /\.(jpg|jpeg|png)$/i.test(file));
 
-  console.log(`Processing: ${imagePath}`);
+  // Process each image
+  imageFiles.forEach(file => {
+    const filePath = path.join(sourceDir, file);
+    const fileNameWithoutExt = path.parse(file).name;
+    const fileExt = path.parse(file).ext;
 
-  const dir = path.dirname(imagePath);
-  const filename = path.basename(imagePath, ext);
-  const outputDir = path.join(dir, 'responsive');
-  ensureDirectoryExists(outputDir);
+    // Create small version (480px width)
+    sharp(filePath)
+      .resize(480)
+      .toFile(path.join(outputDir, `${fileNameWithoutExt}-small${fileExt}`))
+      .catch(err => console.error(`Error processing ${file} for small size:`, err));
 
-  // Get original image dimensions
-  const metadata = await sharp(imagePath).metadata();
-  const { width: originalWidth } = metadata;
+    // Create medium version (768px width)
+    sharp(filePath)
+      .resize(768)
+      .toFile(path.join(outputDir, `${fileNameWithoutExt}-medium${fileExt}`))
+      .catch(err => console.error(`Error processing ${file} for medium size:`, err));
 
-  // Filter sizes that don't exceed the original image width
-  const validSizes = SIZES.filter(size => size <= originalWidth);
+    // Create large version (1200px width)
+    sharp(filePath)
+      .resize(1200)
+      .toFile(path.join(outputDir, `${fileNameWithoutExt}-large${fileExt}`))
+      .catch(err => console.error(`Error processing ${file} for large size:`, err));
 
-  // If original is smaller than smallest target size, just include original
-  if (validSizes.length === 0) {
-    validSizes.push(originalWidth);
-  }
-
-  // Always include original size if it's larger than largest target size
-  if (originalWidth > Math.max(...SIZES) && !validSizes.includes(originalWidth)) {
-    validSizes.push(originalWidth);
-  }
-
-  // Sort sizes
-  validSizes.sort((a, b) => a - b);
-
-  // Generate responsive images
-  const resizedImages = [];
-
-  for (const width of validSizes) {
-    const outputFilename = `${filename}-${width}w${ext}`;
-    const outputPath = path.join(outputDir, outputFilename);
-
-    await sharp(imagePath)
-      .resize(width)
-      .jpeg({ quality: QUALITY, progressive: true })
-      .toFile(outputPath);
-
-    console.log(`Created: ${outputPath} (${width}px wide)`);
-    resizedImages.push({ path: outputPath, width });
-  }
-
-  // Create srcset string for documentation
-  const relativePaths = resizedImages.map(img => {
-    const relativePath = path.join('responsive', path.basename(img.path));
-    return `${relativePath} ${img.width}w`;
+    // Create optimized original
+    sharp(filePath)
+      .jpeg({ quality: 85 })
+      .toFile(path.join(outputDir, file))
+      .catch(err => console.error(`Error optimizing ${file}:`, err));
   });
 
-  const srcsetString = relativePaths.join(', ');
-  const smallestSize = validSizes[0];
-  const fallbackImage = path.join('responsive', `${filename}-${smallestSize}w${ext}`);
-
-  // Generate sample HTML
-  const sampleHtml = `
-  <!-- Sample responsive image HTML for ${imagePath} -->
-  <img
-    src="${fallbackImage}"
-    srcset="${srcsetString}"
-    sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
-    alt="Description of image"
-    loading="lazy"
-  >
-  `;
-
-  // Save documentation
-  const docsPath = path.join(outputDir, `${filename}-srcset.txt`);
-  fs.writeFileSync(docsPath, sampleHtml);
-
-  return {
-    originalPath: imagePath,
-    responsiveImages: resizedImages,
-    srcset: srcsetString,
-    fallback: fallbackImage
-  };
+  console.log(`Processed ${imageFiles.length} images`);
+} else {
+  console.log(`Source directory ${sourceDir} does not exist`);
 }
-
-// Find all images in the repository
-function findImages(directory) {
-  const results = [];
-
-  const items = fs.readdirSync(directory, { withFileTypes: true });
-
-  for (const item of items) {
-    const fullPath = path.join(directory, item.name);
-
-    // Skip responsive directories to avoid processing already processed images
-    if (item.isDirectory()) {
-      if (item.name !== 'responsive' && item.name !== 'node_modules' && !item.name.startsWith('.')) {
-        results.push(...findImages(fullPath));
-      }
-    } else {
-      const ext = path.extname(item.name).toLowerCase();
-      if (['.jpg', '.jpeg', '.png', '.webp'].includes(ext)) {
-        results.push(fullPath);
-      }
-    }
-  }
-
-  return results;
-}
-
-// Main function
-async function main() {
-  const images = findImages('.');
-  console.log(`Found ${images.length} images to process`);
-
-  for (const imagePath of images) {
-    await processImage(imagePath);
-  }
-
-  console.log('All images processed successfully');
-}
-
-main().catch(error => {
-  console.error('Error processing images:', error);
-  process.exit(1);
-});
