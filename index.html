@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <title>Curated Cruiser | Mobile Auto Detailing in Castro Valley & San Ramon, CA</title>
+    <meta name="description" content="Premium mobile auto detailing service in Castro Valley and San Ramon, CA. We bring professional car detailing to your driveway.">
+    <meta name="keywords" content="auto detailing, mobile detailing, car wash, Castro Valley, San Ramon, car detailing, mobile car wash">
+
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Curated Cruiser | Mobile Auto Detailing">
+    <meta property="og:description" content="Premium mobile auto detailing service in Castro Valley and San Ramon, CA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curatedcruiser.com">
+    <meta property="og:image" content="https://curatedcruiser.com/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Chota CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chota/0.8.0/chota.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-darkgray: #1E1E1E;
+            --text-lightgray: #A0A0A0;
+            --color-primary: #00B4D8; /* Accent color - bright blue */
+            --grid-maxWidth: 1200px;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .container {
+            max-width: var(--grid-maxWidth);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: var(--bg-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.nav-shadow {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .book-btn {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            padding-top: 7rem;
+            background: linear-gradient(to bottom, var(--bg-dark), var(--bg-darkgray));
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text {
+                text-align: left;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .accent {
+            color: var(--color-primary);
+        }
+
+        .hero-text p {
+            color: var(--text-lightgray);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 576px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--bg-darkgray);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.2);
+        }
+
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 2rem;
+            height: 2rem;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-lightgray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--bg-dark);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-content {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+
+        .feature-icon {
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+        }
+
+        /* Pricing Section */
+        #pricing {
+            background-color: var(--bg-darkgray);
+        }
+
+        .pricing-tabs {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab-btn:first-child {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .tab-btn:last-child {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .tab-btn:not(.active) {
+            background-color: var(--bg-dark);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .pricing-card {
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.popular {
+            position: relative;
+            transform: scale(1.05);
+            border: 2px solid var(--color-primary);
+            z-index: 1;
+        }
+
+        .popular-tag {
+            background-color: var(--color-primary);
+            color: white;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.5rem;
+        }
+
+        .pricing-body {
+            padding: 2rem;
+        }
+
+        .pricing-card h3 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .subtitle {
+            text-align: center;
+            color: var(--text-lightgray);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-icon {
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--bg-dark);
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-content {
+                flex-direction: row;
+            }
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            color: var(--color-primary);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Booking Section */
+        #booking {
+            background-color: var(--bg-darkgray);
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--bg-darkgray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-primary);
+        }
+
+        /* Mobile menu */
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--bg-darkgray);
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* Helper classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#hero" class="logo">
+                <img src="images/curated_cruiser_logo_with_title.png" alt="Curated Cruiser Logo">
+            </a>
+            <button class="menu-toggle" id="menu-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking" class="book-btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Professional Auto Detailing <span class="accent">At Your Doorstep</span></h1>
+                    <p>Bringing premium detailing services directly to your driveway in Castro Valley and San Ramon.</p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="button primary">Book a Detail</a>
+                        <a href="#services" class="button outline">Our Services</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img
+                        src="images/src/Silver_Audi_three-quarter_view_after.jpeg"
+                        srcset="images/processed/Silver_Audi_three-quarter_view_after-small.jpeg 400w,
+                                images/processed/Silver_Audi_three-quarter_view_after-medium.jpeg 800w,
+                                images/processed/Silver_Audi_three-quarter_view_after-large.jpeg 1200w"
+                        sizes="(max-width: 600px) 400px,
+                                (max-width: 1200px) 800px,
+                                1200px"
+                        alt="Hero image of a freshly detailed car. The paint reflects the clouds"
+                        class="rounded-lg shadow-2xl"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-heading">Our <span class="accent">Detailing</span> Services</h2>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3>Express Detail</h3>
+                    <p>Quick but thorough exterior wash, wheel cleaning, and interior vacuum and wipe-down.</p>
+                    <a href="#booking" class="button outline primary">Book Service →</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </div>
+                    <h3>Full Detail</h3>
+                    <p>Comprehensive interior and exterior detailing including wax protection and deep cleaning.</p>
+                    <a href="#booking" class="button outline primary">Book Service →</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h3>Premium Detail</h3>
+                    <p>The ultimate in mobile detailing. Includes clay bar treatment, paint correction, and ceramic coating.</p>
+                    <a href="#booking" class="button outline primary">Book Service →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/about-image.jpg" alt="Car detailing process">
+                </div>
+                <div class="about-text">
+                    <h2>About <span class="accent">Curated Cruiser</span></h2>
+                    <p>At Curated Cruiser, we bring professional auto detailing services directly to your location in Castro Valley and San Ramon. Our passion for automobiles drives us to deliver exceptional results that protect your investment and keep your vehicle looking its best.</p>
+                    <p>Using only premium products and techniques, our skilled technicians provide meticulous attention to detail that sets us apart from conventional car washes and other mobile detailers.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span>Premium Products</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span>Experienced Technicians</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span>Convenience</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span>Satisfaction Guaranteed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-heading">Our <span class="accent">Pricing</span></h2>
+            <p class="text-center mb-2">Choose the perfect detailing package for your vehicle. All services include our satisfaction guarantee and premium products.</p>
+
+            <!-- Tabs for Express and Full Detailing -->
+            <div class="pricing-tabs">
+                <button id="express-tab" class="tab-btn active">Express Detail</button>
+                <button id="full-tab" class="tab-btn">Full Detail</button>
+            </div>
+
+            <!-- Express Detail Tab Content -->
+            <div id="express-content" class="tab-content active">
+                <div class="pricing-grid">
+                    <!-- Standard Size -->
+                    <div class="pricing-card">
+                        <div class="pricing-body">
+                            <h3>Compact Cruiser</h3>
+                            <p class="subtitle">Sedans, Coupes, Hatchbacks</p>
+                            <div class="price">$99</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a 8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Exterior hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Wheel & tire cleaning</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Interior vacuum</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Door jambs cleaning</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Large Size -->
+                    <div class="pricing-card">
+                        <div class="pricing-body">
+                            <h3>Extended Explorer</h3>
+                            <p class="subtitle">Large SUVs, Trucks, 3-Row Seating</p>
+                            <div class="price">$139</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Exterior hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Wheel & tire cleaning</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Interior vacuum (all rows)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Dashboard & console wipe-down</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Door jambs cleaning</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Detail Tab Content -->
+            <div id="full-content" class="tab-content">
+                <div class="pricing-grid">
+                    <!-- Standard Size -->
+                    <div class="pricing-card">
+                        <div class="pricing-body">
+                            <h3>Compact Cruiser</h3>
+                            <p class="subtitle">Sedans, Coupes, Hatchbacks</p>
+                            <div class="price">$179</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Thorough hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Clay bar treatment</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Complete interior vacuum</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Leather/vinyl cleaned & conditioned</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Paint sealant application</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mid-Size -->
+                    <div class="pricing-card popular">
+                        <div class="popular-tag">MOST POPULAR</div>
+                        <div class="pricing-body">
+                            <h3>Mid-Size Mover</h3>
+                            <p class="subtitle">Small SUVs, Vans, Crossovers</p>
+                            <div class="price">$209</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Thorough hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Clay bar treatment</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Complete interior vacuum</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Leather/vinyl cleaned & conditioned</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Dashboard detailed</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Paint sealant application</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Large Size -->
+                    <div class="pricing-card">
+                        <div class="pricing-body">
+                            <h3>Extended Explorer</h3>
+                            <p class="subtitle">Large SUVs, Trucks, 3-Row Seating</p>
+                            <div class="price">$239</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Thorough hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Clay bar treatment</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Complete interior vacuum (all rows)</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Leather/vinyl cleaned & conditioned</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Dashboard detailed</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Paint sealant application</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Trunk cleaning</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-heading">Get In <span class="accent">Touch</span></h2>
+            <p class="text-center mb-2">Have questions about our services? Want to make a special request? Contact us today.</p>
+
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" class="input"></textarea>
+                        </div>
+                        <button type="submit" class="button primary">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3 class="mb-1">Contact Information</h3>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <div>
+                            <p>Phone</p>
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <p>Email</p>
+                            <p>info@curatedcruiser.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <p>Service Areas</p>
+                            <p>Castro Valley and San Ramon, CA</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <p>Business Hours</p>
+                            <p>Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 5PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <div class="container">
+            <h2 class="section-heading">Book Your <span class="accent">Detail</span></h2>
+            <p class="text-center mb-2">Schedule your mobile detailing service. We'll come to your location in Castro Valley or San Ramon.</p>
+
+            <!-- Placeholder for booking widget -->
+            <div class="text-center">
+                <p class="mb-1">Choose your service package and preferred time</p>
+                <!-- This would be replaced with your actual booking widget -->
+                <button class="button primary">Check Available Times</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <p>© 2025 Curated Cruiser. All rights reserved.</p>
+            <p class="text-lightgray">Mobile Auto Detailing in Castro Valley and San Ramon, CA</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-shadow');
+            } else {
+                navbar.classList.remove('nav-shadow');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Pricing tabs
+        const expressTab = document.getElementById('express-tab');
+        const fullTab = document.getElementById('full-tab');
+        const expressContent = document.getElementById('express-content');
+        const fullContent = document.getElementById('full-content');
+
+        expressTab.addEventListener('click', () => {
+            expressTab.classList.add('active');
+            fullTab.classList.remove('active');
+            expressContent.classList.add('active');
+            fullContent.classList.remove('active');
+        });
+
+        fullTab.addEventListener('click', () => {
+            fullTab.classList.add('active');
+            expressTab.classList.remove('active');
+            fullContent.classList.add('active');
+            expressContent.classList.remove('active');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Wheel & tire cleaning</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Interior vacuum</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Dashboard & console wipe-down</span>
+                                </li>
+                            </ul>
+                            <div class="text-center">
+                                <a href="#booking" class="button primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mid-Size -->
+                    <div class="pricing-card popular">
+                        <div class="popular-tag">MOST POPULAR</div>
+                        <div class="pricing-body">
+                            <h3>Mid-Size Mover</h3>
+                            <p class="subtitle">Small SUVs, Vans, Crossovers</p>
+                            <div class="price">$119</div>
+                            <ul class="features-list">
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span>Exterior hand wash</span>
+                                </li>
+                                <li class="feature-item">
+                                    <span class="feature-icon">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8
