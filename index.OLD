@@ -430,10 +430,45 @@
         </div>
     </section>
 
-    <!-- Contact and Booking sections would go here -->
+    <!-- Footer Section -->
+    <footer class="bg-dark py-12 mt-auto">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="text-center md:text-left">
+                    <h4 class="font-cinzel text-xl mb-4">Contact</h4>
+                    <p class="text-lightgray mb-2">Castro Valley & San Ramon, CA</p>
+                    <a href="tel:555-555-5555" class="text-accent hover:underline">555-555-5555</a>
+                    <br>
+                    <a href="mailto:info@curatedcruiser.com" class="text-accent hover:underline">info@curatedcruiser.com</a>
+                </div>
 
-    <!-- Footer would go here -->
+                <!-- Quick Links -->
+                <div class="text-center">
+                    <h4 class="font-cinzel text-xl mb-4">Quick Links</h4>
+                    <div class="space-y-2">
+                        <p><a href="#services" class="text-lightgray hover:text-accent">Services</a></p>
+                        <p><a href="#pricing" class="text-lightgray hover:text-accent">Pricing</a></p>
+                        <p><a href="#booking" class="text-lightgray hover:text-accent">Book Now</a></p>
+                    </div>
+                </div>
 
+                <!-- Social & Legal -->
+                <div class="text-center md:text-right">
+                    <h4 class="font-cinzel text-xl mb-4">Connect</h4>
+                    <div class="space-y-2">
+                        <p><a href="https://facebook.com/curatedcruiser" class="text-lightgray hover:text-accent">Facebook</a></p>
+                        <p><a href="https://instagram.com/curatedcruiser" class="text-lightgray hover:text-accent">Instagram</a></p>
+                        <p><a href="https://yelp.com/curatedcruiser" class="text-lightgray hover:text-accent">Yelp</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-8 pt-8 border-t border-darkgray">
+                <p class="text-lightgray">&copy; 2025 Curated Cruiser. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     <!-- Custom JavaScript -->
     <script src="scripts.js"></script>
 </body>
