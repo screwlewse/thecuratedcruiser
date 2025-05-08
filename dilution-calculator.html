@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilution Ratio Calculator</title>
+    <!-- Chota CSS Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chota/0.8.0/chota.min.css">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --primary: #2c7be5;
+            --color-text: #212529;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--color-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tip {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        .result {
+            background-color: #e9f2fe;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .result-hidden {
+            display: none;
+        }
+        
+        .result h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -0.5rem;
+        }
+        
+        .col {
+            flex: 1;
+            padding: 0 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .col {
+                flex: 0 0 100%;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .examples {
+            margin-top: 2rem;
+        }
+
+        .examples h3 {
+            color: #495057;
+        }
+
+        .examples ul {
+            padding-left: 1.5rem;
+        }
+
+        .examples li {
+            margin-bottom: 0.5rem;
+        }
+
+        #customRatioGroup {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Detailing Dilution Calculator</h1>
+        
+        <div class="card">
+            <h2 class="subtitle">Calculate Product and Water Amounts for Professional Detailers</h2>
+            
+            <form id="dilutionForm">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="ratio">Dilution Ratio</label>
+                            <select id="ratio" class="is-full-width">
+                                <option value="1">1:1 (Extra Strong - Tire Dressing)</option>
+                                <option value="2">2:1 (Strong - Exterior Trim/Dressing)</option>
+                                <option value="4" selected>4:1 (Strong - Wheel Cleaner)</option>
+                                <option value="5">5:1 (Medium - Foam Cannon/Fabric Cleaner)</option>
+                                <option value="10">10:1 (Medium - Interior Cleaner)</option>
+                                <option value="20">20:1 (Mild - Diluted Interior Cleaner)</option>
+                                <option value="32">32:1 (Very Mild - Quick Detailer/ONR)</option>
+                                <option value="50">50:1 (Ultra Mild)</option>
+                            </select>
+                            <div class="tip">Higher ratio = More diluted = Milder solution</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="containerType">Container Type</label>
+                            <select id="containerType" class="is-full-width">
+                                <option value="32oz">32 oz Spray Bottle</option>
+                                <option value="1L">1 Liter Pump Sprayer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="button" id="calculateBtn" class="button primary is-full-width">Calculate</button>
+            </form>
+            
+            <div id="results" class="result result-hidden">
+                <h3>Dilution Results</h3>
+                <div id="resultText"></div>
+            </div>
+        </div>
+        
+        <div class="card examples">
+            <h3>Professional Detailing Dilution Guide</h3>
+            <ul>
+                <li><strong>1:1</strong> - Tire dressing, extreme wheel cleaning situations</li>
+                <li><strong>2:1</strong> - Exterior trim dressing, wheel wells, engine bay dressing</li>
+                <li><strong>4:1</strong> - Standard wheel cleaner dilution</li>
+                <li><strong>5:1</strong> - Foam cannon soap, fabric/carpet cleaners</li>
+                <li><strong>10:1</strong> - Interior all-purpose cleaners (standard strength)</li>
+                <li><strong>20:1</strong> - Diluted interior cleaner (for sensitive surfaces)</li>
+                <li><strong>32:1</strong> - Quick detailers, rinseless wash, clay lubricant (ONR)</li>
+            </ul>
+            <div class="tip">Remember: Always test products in an inconspicuous area first!</div>
+        </div>
+    </div>
+    
+            <footer>
+        <p>Auto Detailing Dilution Calculator | Based on detailing tutorial video</p>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            // Get references to our elements
+            const calculateBtn = document.getElementById('calculateBtn');
+            const results = document.getElementById('results');
+            const resultText = document.getElementById('resultText');
+            
+            // Handle button click
+            calculateBtn.addEventListener('click', () => {
+                // Get form values
+                const containerType = document.getElementById('containerType').value;
+                let containerSize, unit;
+                
+                // Set container size and unit based on selection
+                if (containerType === '32oz') {
+                    containerSize = 32;
+                    unit = 'oz';
+                } else { // 1L
+                    containerSize = 1000;
+                    unit = 'ml';
+                }
+                
+                // Get ratio value
+                const ratio = parseFloat(document.getElementById('ratio').value);
+                
+                // Calculate the amounts
+                const totalParts = ratio + 1;
+                const productAmount = containerSize / totalParts;
+                const waterAmount = containerSize - productAmount;
+                
+                // Format the results
+                const productAmountRounded = Math.round(productAmount * 10) / 10;
+                const waterAmountRounded = Math.round(waterAmount * 10) / 10;
+                
+                // Get selected ratio text
+                const ratioSelect = document.getElementById('ratio');
+                const selectedRatioText = ratioSelect.options[ratioSelect.selectedIndex].text;
+                
+                // Display the results
+                let containerDisplay = containerType === '32oz' ? 
+                    '32 oz Spray Bottle' : '1 Liter Pump Sprayer';
+                
+                resultText.innerHTML = `
+                    <p>For a <strong>${containerDisplay}</strong> with <strong>${selectedRatioText}</strong> dilution:</p>
+                    <ul>
+                        <li>Use <strong>${productAmountRounded} ${unit}</strong> of product</li>
+                        <li>Add <strong>${waterAmountRounded} ${unit}</strong> of water</li>
+                    </ul>
+                    <p class="tip">Tip: Add water first, then product to avoid excessive suds.</p>
+                `;
+                
+                results.classList.remove('result-hidden');
+                
+                // Scroll to results
+                results.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
