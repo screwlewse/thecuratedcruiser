@@ -29,11 +29,23 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
+          cache: 'npm'
 
       - name: Install dependencies
         run: |
-          npm init -y
-          npm install sharp
+          # Check if package.json exists and has sharp dependency
+          if [ -f "package.json" ] && grep -q '"sharp"' package.json; then
+            npm ci
+          else
+            # If package.json exists but doesn't have sharp
+            if [ -f "package.json" ]; then
+              npm install --save sharp
+            else
+              # Create package.json and install sharp
+              npm init -y
+              npm install --save sharp
+            fi
+          fi
 
       - name: Process images
         run: |
