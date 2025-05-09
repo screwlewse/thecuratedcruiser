@@ -3,204 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dilution Ratio Calculator</title>
-    <!-- Chota CSS Framework -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chota/0.8.0/chota.min.css">
+    <title>Dilution Calculator | Curated Cruiser</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional auto detailing dilution calculator for optimal product mixing ratios. A tool by Curated Cruiser in Castro Valley & San Ramon, CA.">
+    <meta name="keywords" content="auto detailing, dilution calculator, detailing ratios, car wash chemicals, Curated Cruiser">
+
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Detailing Dilution Calculator | Curated Cruiser">
+    <meta property="og:description" content="Professional auto detailing dilution calculator for optimal product mixing ratios.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curatedcruiser.com/dilution-calculator">
+    <meta property="og:image" content="https://curatedcruiser.com/images/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #f8f9fa;
-            --primary: #2c7be5;
-            --color-text: #212529;
+            --bg-dark: #121212;
+            --bg-darkgray: #1E1E1E;
+            --text-lightgray: #A0A0A0;
+            --color-primary: #00B4D8; /* Accent color - bright blue */
+            --text-light: #f2f1ef;
         }
-        
+
         body {
-            background-color: var(--bg-color);
-            color: var(--color-text);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
             min-height: 100vh;
-            padding: 1rem;
         }
-        
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cinzel', serif;
+            margin-top: 0;
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 1.5rem;
         }
-        
-        .card {
-            background-color: white;
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: var(--bg-dark);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.nav-shadow {
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .book-btn {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            text-decoration: none;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Calculator Section */
+        #calculator {
+            padding-top: 7rem;
+            background-color: var(--bg-darkgray);
+        }
+
+        .calculator-card {
+            background-color: var(--bg-dark);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .title {
+
+        .calculator-title {
             text-align: center;
             margin-bottom: 2rem;
-            color: var(--primary);
+            color: var(--color-primary);
         }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: #495057;
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-        
+
+        .accent {
+            color: var(--color-primary);
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         label {
-            font-weight: 600;
             display: block;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
-        
+
+        select, input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background-color: var(--bg-darkgray);
+            color: var(--text-light);
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
         .tip {
             font-size: 0.9rem;
-            color: #6c757d;
+            color: var(--text-lightgray);
             margin-top: 0.5rem;
         }
-        
-        .result {
-            background-color: #e9f2fe;
-            border-left: 4px solid var(--primary);
-            padding: 1rem;
-            margin-top: 1.5rem;
+
+        button {
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
             border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Josefin Sans', sans-serif;
+            transition: opacity 0.3s;
+            width: 100%;
         }
-        
-        .result-hidden {
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            background-color: rgba(0, 180, 216, 0.1);
+            border-left: 4px solid var(--color-primary);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 4px;
             display: none;
         }
-        
+
         .result h3 {
-            color: var(--primary);
+            color: var(--color-primary);
             margin-top: 0;
-        }
-        
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -0.5rem;
-        }
-        
-        .col {
-            flex: 1;
-            padding: 0 0.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .col {
-                flex: 0 0 100%;
-                margin-bottom: 1rem;
-            }
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #6c757d;
+            font-size: 1.5rem;
         }
 
-        .examples {
-            margin-top: 2rem;
+        /* Dilution Guide */
+        .dilution-guide {
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .examples h3 {
-            color: #495057;
+        .dilution-guide h3 {
+            margin-bottom: 1.5rem;
         }
 
-        .examples ul {
+        .dilution-guide ul {
             padding-left: 1.5rem;
         }
 
-        .examples li {
-            margin-bottom: 0.5rem;
+        .dilution-guide li {
+            margin-bottom: 0.75rem;
         }
 
-        #customRatioGroup {
-            display: none;
+        .dilution-guide li strong {
+            color: var(--color-primary);
+        }
+
+        /* Row and Columns */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -1rem;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            
+            .col {
+                margin-bottom: 1rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Mobile menu */
+        @media (max-width: 767px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background-color: var(--bg-darkgray);
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="title">Detailing Dilution Calculator</h1>
-        
-        <div class="card">
-            <h2 class="subtitle">Calculate Product and Water Amounts for Professional Detailers</h2>
-            
-            <form id="dilutionForm">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="ratio">Dilution Ratio</label>
-                            <select id="ratio" class="is-full-width">
-                                <option value="1">1:1 (Extra Strong - Tire Dressing)</option>
-                                <option value="2">2:1 (Strong - Exterior Trim/Dressing)</option>
-                                <option value="4" selected>4:1 (Strong - Wheel Cleaner)</option>
-                                <option value="5">5:1 (Medium - Foam Cannon/Fabric Cleaner)</option>
-                                <option value="10">10:1 (Medium - Interior Cleaner)</option>
-                                <option value="20">20:1 (Mild - Diluted Interior Cleaner)</option>
-                                <option value="32">32:1 (Very Mild - Quick Detailer/ONR)</option>
-                                <option value="50">50:1 (Ultra Mild)</option>
-                            </select>
-                            <div class="tip">Higher ratio = More diluted = Milder solution</div>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/curated_cruiser_logo_with_title.png" alt="Curated Cruiser Logo">
+            </a>
+            <button class="menu-toggle" id="menu-toggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#booking" class="book-btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Calculator Section -->
+    <section id="calculator">
+        <div class="container">
+            <h2 class="section-heading">Detailing <span class="accent">Dilution</span> Calculator</h2>
+            <p class="text-center" style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Use our professional dilution calculator to determine the correct ratio of product to water for all your detailing needs. 
+                Precise dilution ratios ensure optimal performance of your detailing products.
+            </p>
+
+            <div class="calculator-card">
+                <h3 class="calculator-title">Calculate Product and Water Amounts</h3>
+                
+                <form id="dilutionForm">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="ratio">Dilution Ratio</label>
+                                <select id="ratio">
+                                    <option value="1">1:1 (Extra Strong - Tire Dressing)</option>
+                                    <option value="2">2:1 (Strong - Exterior Trim/Dressing)</option>
+                                    <option value="4" selected>4:1 (Strong - Wheel Cleaner)</option>
+                                    <option value="5">5:1 (Medium - Foam Cannon/Fabric Cleaner)</option>
+                                    <option value="10">10:1 (Medium - Interior Cleaner)</option>
+                                    <option value="20">20:1 (Mild - Diluted Interior Cleaner)</option>
+                                    <option value="32">32:1 (Very Mild - Quick Detailer/ONR)</option>
+                                    <option value="50">50:1 (Ultra Mild)</option>
+                                </select>
+                                <div class="tip">Higher ratio = More diluted = Milder solution</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="containerType">Container Type</label>
+                                <select id="containerType">
+                                    <option value="32oz">32 oz Spray Bottle</option>
+                                    <option value="1L">1 Liter Pump Sprayer</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="containerType">Container Type</label>
-                            <select id="containerType" class="is-full-width">
-                                <option value="32oz">32 oz Spray Bottle</option>
-                                <option value="1L">1 Liter Pump Sprayer</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                    <button type="button" id="calculateBtn">Calculate</button>
+                </form>
                 
-                <button type="button" id="calculateBtn" class="button primary is-full-width">Calculate</button>
-            </form>
-            
-            <div id="results" class="result result-hidden">
-                <h3>Dilution Results</h3>
-                <div id="resultText"></div>
+                <div id="results" class="result">
+                    <h3>Dilution Results</h3>
+                    <div id="resultText"></div>
+                </div>
+            </div>
+
+            <div class="dilution-guide">
+                <h3 class="section-heading">Professional <span class="accent">Dilution</span> Guide</h3>
+                <ul>
+                    <li><strong>1:1</strong> - Tire dressing, extreme wheel cleaning situations</li>
+                    <li><strong>2:1</strong> - Exterior trim dressing, wheel wells, engine bay dressing</li>
+                    <li><strong>4:1</strong> - Standard wheel cleaner dilution</li>
+                    <li><strong>5:1</strong> - Foam cannon soap, fabric/carpet cleaners</li>
+                    <li><strong>10:1</strong> - Interior all-purpose cleaners (standard strength)</li>
+                    <li><strong>20:1</strong> - Diluted interior cleaner (for sensitive surfaces)</li>
+                    <li><strong>32:1</strong> - Quick detailers, rinseless wash, clay lubricant (ONR)</li>
+                </ul>
+                <div class="tip" style="text-align: center; margin-top: 1.5rem;">Remember: Always test products in an inconspicuous area first!</div>
             </div>
         </div>
-        
-        <div class="card examples">
-            <h3>Professional Detailing Dilution Guide</h3>
-            <ul>
-                <li><strong>1:1</strong> - Tire dressing, extreme wheel cleaning situations</li>
-                <li><strong>2:1</strong> - Exterior trim dressing, wheel wells, engine bay dressing</li>
-                <li><strong>4:1</strong> - Standard wheel cleaner dilution</li>
-                <li><strong>5:1</strong> - Foam cannon soap, fabric/carpet cleaners</li>
-                <li><strong>10:1</strong> - Interior all-purpose cleaners (standard strength)</li>
-                <li><strong>20:1</strong> - Diluted interior cleaner (for sensitive surfaces)</li>
-                <li><strong>32:1</strong> - Quick detailers, rinseless wash, clay lubricant (ONR)</li>
-            </ul>
-            <div class="tip">Remember: Always test products in an inconspicuous area first!</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Curated Cruiser. All rights reserved.</p>
+            <p style="color: var(--text-lightgray);">Mobile Auto Detailing in Castro Valley and San Ramon, CA</p>
         </div>
-    </div>
-    
-            <footer>
-        <p>Auto Detailing Dilution Calculator | Based on detailing tutorial video</p>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Wait for DOM to be fully loaded
-        window.addEventListener('DOMContentLoaded', () => {
-            // Get references to our elements
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-shadow');
+            } else {
+                navbar.classList.remove('nav-shadow');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Dilution Calculator
+        document.addEventListener('DOMContentLoaded', () => {
             const calculateBtn = document.getElementById('calculateBtn');
             const results = document.getElementById('results');
             const resultText = document.getElementById('resultText');
             
-            // Handle button click
             calculateBtn.addEventListener('click', () => {
                 // Get form values
                 const containerType = document.getElementById('containerType').value;
@@ -244,10 +486,10 @@
                     <p class="tip">Tip: Add water first, then product to avoid excessive suds.</p>
                 `;
                 
-                results.classList.remove('result-hidden');
+                results.style.display = 'block';
                 
                 // Scroll to results
-                results.scrollIntoView({ behavior: 'smooth' });
+                results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
     </script>
