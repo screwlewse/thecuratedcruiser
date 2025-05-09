@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dilution Calculator | Curated Cruiser</title>
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="Professional auto detailing dilution calculator for optimal product mixing ratios. A tool by Curated Cruiser in Castro Valley & San Ramon, CA.">
     <meta name="keywords" content="auto detailing, dilution calculator, detailing ratios, car wash chemicals, Curated Cruiser">
@@ -49,7 +49,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -143,11 +143,13 @@
             cursor: pointer;
         }
 
+
+
         /* Calculator Section */
         #calculator {
             padding-top: 7rem;
-            background-color: var(--bg-darkgray);
-        }
+            background-col
+
 
         .calculator-card {
             background-color: var(--bg-dark);
@@ -272,7 +274,7 @@
             .row {
                 flex-direction: column;
             }
-            
+
             .col {
                 margin-bottom: 1rem;
             }
@@ -284,7 +286,7 @@
             padding: 2rem 0;
             text-align: center;
         }
-        
+
         /* Mobile menu */
         @media (max-width: 767px) {
             .nav-links {
@@ -340,13 +342,13 @@
         <div class="container">
             <h2 class="section-heading">Detailing <span class="accent">Dilution</span> Calculator</h2>
             <p class="text-center" style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Use our professional dilution calculator to determine the correct ratio of product to water for all your detailing needs. 
+                Use our professional dilution calculator to determine the correct ratio of product to water for all your detailing needs.
                 Precise dilution ratios ensure optimal performance of your detailing products.
             </p>
 
             <div class="calculator-card">
                 <h3 class="calculator-title">Calculate Product and Water Amounts</h3>
-                
+
                 <form id="dilutionForm">
                     <div class="row">
                         <div class="col">
@@ -365,7 +367,7 @@
                                 <div class="tip">Higher ratio = More diluted = Milder solution</div>
                             </div>
                         </div>
-                        
+
                         <div class="col">
                             <div class="form-group">
                                 <label for="containerType">Container Type</label>
@@ -376,10 +378,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button type="button" id="calculateBtn">Calculate</button>
                 </form>
-                
+
                 <div id="results" class="result">
                     <h3>Dilution Results</h3>
                     <div id="resultText"></div>
@@ -442,12 +444,12 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const results = document.getElementById('results');
             const resultText = document.getElementById('resultText');
-            
+
             calculateBtn.addEventListener('click', () => {
                 // Get form values
                 const containerType = document.getElementById('containerType').value;
                 let containerSize, unit;
-                
+
                 // Set container size and unit based on selection
                 if (containerType === '32oz') {
                     containerSize = 32;
@@ -456,27 +458,27 @@
                     containerSize = 1000;
                     unit = 'ml';
                 }
-                
+
                 // Get ratio value
                 const ratio = parseFloat(document.getElementById('ratio').value);
-                
+
                 // Calculate the amounts
                 const totalParts = ratio + 1;
                 const productAmount = containerSize / totalParts;
                 const waterAmount = containerSize - productAmount;
-                
+
                 // Format the results
                 const productAmountRounded = Math.round(productAmount * 10) / 10;
                 const waterAmountRounded = Math.round(waterAmount * 10) / 10;
-                
+
                 // Get selected ratio text
                 const ratioSelect = document.getElementById('ratio');
                 const selectedRatioText = ratioSelect.options[ratioSelect.selectedIndex].text;
-                
+
                 // Display the results
-                let containerDisplay = containerType === '32oz' ? 
+                let containerDisplay = containerType === '32oz' ?
                     '32 oz Spray Bottle' : '1 Liter Pump Sprayer';
-                
+
                 resultText.innerHTML = `
                     <p>For a <strong>${containerDisplay}</strong> with <strong>${selectedRatioText}</strong> dilution:</p>
                     <ul>
@@ -485,9 +487,9 @@
                     </ul>
                     <p class="tip">Tip: Add water first, then product to avoid excessive suds.</p>
                 `;
-                
+
                 results.style.display = 'block';
-                
+
                 // Scroll to results
                 results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
