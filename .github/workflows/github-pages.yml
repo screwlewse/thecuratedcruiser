@@ -1,14 +1,13 @@
-name: Process Images and Deploy GitHub Pages
+name: Deploy to GitHub Pages
 
+# Only run when manually triggered
 on:
-  push:
-    paths:
-      - 'images/src/**'  # Trigger on image changes
-      - '**/*.html'      # Trigger on HTML changes
-      - '**/*.css'       # Trigger on CSS changes
-      - '**/*.js'        # Trigger on JS changes
-    branches: [ main ]
-  workflow_dispatch:     # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Deployment message'
+        required: true
+        default: 'Manual deployment to GitHub Pages'
 
 # Add proper permissions
 permissions:
@@ -123,7 +122,7 @@ jobs:
             echo "No changes to commit"
           else
             # Commit the changes
-            git commit -m "Generate responsive images"
+            git commit -m "Generate responsive images for deployment"
 
             # Pull with rebase strategy
             git pull --rebase origin main
