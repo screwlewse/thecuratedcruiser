@@ -60,3 +60,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Toggle service details
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on the pricing page (the elements exist)
+    if (document.querySelector('.toggle-details')) {
+        const toggleButtons = document.querySelectorAll('.toggle-details');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('data-target');
+                const targetList = document.getElementById(targetId);
+
+                // Toggle the expanded class
+                targetList.classList.toggle('expanded');
+
+                // Change the text based on current state
+                if (targetList.classList.contains('expanded')) {
+                    this.textContent = 'Hide Details';
+                } else {
+                    this.textContent = 'Show Details';
+                }
+            });
+        });
+
+        // Function to make all cards in a row the same height
+        function equalizeCardHeights() {
+            const grids = document.querySelectorAll('.pricing-grid');
+
+            grids.forEach(grid => {
+                const cards = grid.querySelectorAll('.pricing-card');
+                let maxHeight = 0;
+
+                // Reset heights first
+                cards.forEach(card => {
+                    card.style.height = 'auto';
+                });
+
+                // Find the tallest card
+                cards.forEach(card => {
+                    const cardHeight = card.offsetHeight;
+                    maxHeight = Math.max(maxHeight, cardHeight);
+                });
+
+                // Set all cards to the height of the tallest card
+                cards.forEach(card => {
+                    card.style.height = maxHeight + 'px';
+                });
+            });
+        }
+
+        // Run on page load
+        equalizeCardHeights();
+
+        // Run on window resize
+        window.addEventListener('resize', equalizeCardHeights);
+    }
+});
