@@ -11,11 +11,27 @@ html {
     --color-primary: #00B4D8; /* Accent color - bright blue */
     --grid-maxWidth: 1200px;
 }
-
+:root {
+    --bg-color: #333333;
+    --bg-secondary-color: #222222;
+    --color-primary: #43b0f1;
+    --color-lightGrey: #d2d6dd;
+    --color-grey: #747681;
+    --color-darkGrey: #3f4144;
+    --color-error: #d43939;
+    --color-success: #28bd14;
+    --grid-maxWidth: 120rem;
+    --grid-gutter: 2rem;
+    --font-size: 1.6rem;
+    --font-color: #dcd6cb;
+    --font-family-sans: 'Josefin Sans', 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+    --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+    --font-family-title: 'Cinzel', Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+}
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: var(--bg-dark);
-    color: white;
+    color: var(--font-color);
     margin: 0;
     padding: 0;
     font-size: 1.2em;
@@ -23,6 +39,10 @@ body {
 
 h1, h2, h3, h4, h5 {
     font-family: 'Cinzel', serif;
+}
+
+h3 {
+    font-size: 1.5rem;
 }
 
 .container {
@@ -75,10 +95,10 @@ nav .container {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--color-primary);
     text-decoration: none;
     position: relative;
-    transition: color 0.3s;
+    transition: color .3s ease-in-out;
 }
 
 .nav-links a:hover {
@@ -100,9 +120,9 @@ nav .container {
     width: 100%;
 }
 
-.book-btn {
+.nav-links .book-btn, .book-btn {
     background-color: var(--color-primary);
-    color: white;
+    color: var(--bg-darkgray);
     padding: 0.6rem 1.25rem;
     border-radius: 4px;
     border: none;
@@ -112,7 +132,7 @@ nav .container {
 
 .nav-links .book-btn:hover,
 .book-btn:hover {
-    color: var(--bg-darkgray)
+    color: var(--font-color);
 }
 
 .menu-toggle {
@@ -155,12 +175,6 @@ nav .container {
     color: var(--text-lightgray);
     font-size: 1.25rem;
     margin-bottom: 2rem;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 }
 
 .hero-image {
@@ -386,8 +400,8 @@ footer {
 }
 
 .pricing-card {
-    background-color: var(--bg-darkgray);
-    border: 1px solid #2a2a2a;
+    background-color: var(--bg-secondary-color);
+    /* border: 1px solid var(--bg-dark); */
     border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -403,15 +417,14 @@ footer {
 }
 
 .card-header {
-    background-color: var(--bg-dark);
-    padding: 1.5rem;
+    /* background-color: var(--bg-dark); */
+    padding: 1.0rem 1.5rem 0.5rem;
     text-align: center;
-    border-bottom: 1px solid #2a2a2a;
+    /* border-bottom: 1px solid #2a2a2a; */
 }
 
 .card-title {
     margin: 0;
-    font-size: 1.4rem;
     color: white;
 }
 
