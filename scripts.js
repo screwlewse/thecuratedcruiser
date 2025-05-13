@@ -1,121 +1,111 @@
-// Navigation scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('nav-shadow');
-    } else {
-        navbar.classList.remove('nav-shadow');
-    }
-});
+// Utility Functions
+const getElement = (selector) => document.querySelector(selector);
+const getAllElements = (selector) => document.querySelectorAll(selector);
 
-// Mobile menu toggle
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
+// Pure Functions for Calculations and Transformations
+const calculateScrollOffset = (target, headerOffset = 80) => {
+    const elementPosition = target.getBoundingClientRect().top;
+    return elementPosition + window.pageYOffset - headerOffset;
+};
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+const determineButtonText = (isExpanded) =>
+    isExpanded ? 'Show Less' : 'Show More';
 
-// Close mobile menu when clicking a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
-});
+const findMaxHeight = (elements) => {
+    return Array.from(elements).reduce((maxHeight, element) => {
+        // Reset height to get natural height
+        element.style.height = 'auto';
+        const elementHeight = element.offsetHeight;
+        return Math.max(maxHeight, elementHeight);
+    }, 0);
+};
 
-// Pricing tabs
-const expressTab = document.getElementById('express-tab');
-const fullTab = document.getElementById('full-tab');
-const expressContent = document.getElementById('express-content');
-const fullContent = document.getElementById('full-content');
+// Navigation Scroll Effect
+const handleNavbarScrollEffect = () => {
+    const navbar = getElement('#navbar');
+    const toggleNavbarShadow = () => {
+        navbar.classList.toggle('nav-shadow', window.scrollY > 50);
+    };
+    window.addEventListener('scroll', toggleNavbarShadow);
+};
 
-expressTab.addEventListener('click', () => {
-    expressTab.classList.add('active');
-    fullTab.classList.remove('active');
-    expressContent.classList.add('active');
-    fullContent.classList.remove('active');
-});
+// Mobile Menu Toggle
+const initializeMobileMenu = () => {
+    const menuToggle = getElement('#menu-toggle');
+    const navLinks = getElement('#nav-links');
+    const toggleMobileMenu = () => {
+        navLinks.classList.toggle('active');
+    };
+    const closeMobileMenuOnLinkClick = (event) => {
+        if (event.target.tagName === 'A') {
+            navLinks.classList.remove('active');
+        }
+    };
+    menuToggle.addEventListener('click', toggleMobileMenu);
+    navLinks.addEventListener('click', closeMobileMenuOnLinkClick);
+};
 
-fullTab.addEventListener('click', () => {
-    fullTab.classList.add('active');
-    expressTab.classList.remove('active');
-    fullContent.classList.add('active');
-    expressContent.classList.remove('active');
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+// Smooth Scrolling
+const initializeSmoothScrolling = () => {
+    const smoothScroll = (event) => {
+        event.preventDefault();
+        const targetSelector = event.currentTarget.getAttribute('href');
+        const target = getElement(targetSelector);
         if (target) {
-            const headerOffset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+            const offsetPosition = calculateScrollOffset(target);
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
             });
         }
+    };
+    getAllElements('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', smoothScroll);
     });
-});
+};
 
-// Toggle service details
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on the pricing page (the elements exist)
-    if (document.querySelector('.toggle-details')) {
-        const toggleButtons = document.querySelectorAll('.toggle-details');
+// Service Details Toggle
+const initializeServiceDetailsToggle = () => {
+    const toggleServiceDetails = (event) => {
+        event.preventDefault();
+        const button = event.currentTarget;
+        const targetId = button.getAttribute('data-target');
+        const targetList = getElement(`#${targetId}`);
+        // Toggle expanded state
+        targetList.classList.toggle('expanded');
+        // Update button text based on current state
+        button.textContent = determineButtonText(
+            targetList.classList.contains('expanded')
+        );
+    };
+    getAllElements('.toggle-details').forEach(button => {
+        button.addEventListener('click', toggleServiceDetails);
+    });
+};
 
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('data-target');
-                const targetList = document.getElementById(targetId);
-
-                // Toggle the expanded class
-                targetList.classList.toggle('expanded');
-
-                // Change the text based on current state
-                if (targetList.classList.contains('expanded')) {
-                    this.textContent = 'Hide Details';
-                } else {
-                    this.textContent = 'Show Details';
-                }
-            });
+// Card Height Equalization
+const equalizeCardHeights = () => {
+    const grids = getAllElements('.pricing-grid');
+    grids.forEach(grid => {
+        const cards = grid.querySelectorAll('.pricing-card');
+        const maxHeight = findMaxHeight(cards);
+        // Set all cards to the maximum height
+        cards.forEach(card => {
+            card.style.height = `${maxHeight}px`;
         });
+    });
+};
 
-        // Function to make all cards in a row the same height
-        function equalizeCardHeights() {
-            const grids = document.querySelectorAll('.pricing-grid');
+// Initialize all event listeners and setup functions
+const initializePageInteractions = () => {
+    handleNavbarScrollEffect();
+    initializeMobileMenu();
+    initializeSmoothScrolling();
+    initializeServiceDetailsToggle();
+    // Run card height equalization
+    equalizeCardHeights();
+    window.addEventListener('resize', equalizeCardHeights);
+};
 
-            grids.forEach(grid => {
-                const cards = grid.querySelectorAll('.pricing-card');
-                let maxHeight = 0;
-
-                // Reset heights first
-                cards.forEach(card => {
-                    card.style.height = 'auto';
-                });
-
-                // Find the tallest card
-                cards.forEach(card => {
-                    const cardHeight = card.offsetHeight;
-                    maxHeight = Math.max(maxHeight, cardHeight);
-                });
-
-                // Set all cards to the height of the tallest card
-                cards.forEach(card => {
-                    card.style.height = maxHeight + 'px';
-                });
-            });
-        }
-
-        // Run on page load
-        equalizeCardHeights();
-
-        // Run on window resize
-        window.addEventListener('resize', equalizeCardHeights);
-    }
-});
+// DOM Content Loaded Listener
+document.addEventListener('DOMContentLoaded', initializePageInteractions);
