@@ -151,13 +151,13 @@ nav .container {
 
 .hero-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 3rem;
 }
 
 .hero-text {
     flex: 1;
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -253,7 +253,7 @@ nav .container {
 
 .about-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 3rem;
 }
 
@@ -312,7 +312,7 @@ nav .container {
 
 .contact-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 3rem;
 }
 .contact-form {
@@ -568,7 +568,7 @@ footer {
         display: block;
     }
     .hero-content {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
     }
     .hero-text {
@@ -584,10 +584,10 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
     .about-content {
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
     }
     .contact-content {
-        flex-direction: row;
+        flex-direction: column;
     }
 }
