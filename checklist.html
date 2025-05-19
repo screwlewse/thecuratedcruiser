@@ -27,359 +27,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap"
         rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-dark: #121212;
-            --bg-darkgray: #1E1E1E;
-            --text-lightgray: #A0A0A0;
-            --color-primary: #00B4D8;
-            /* Accent color - bright blue */
-            --text-light: #f2f1ef;
-        }
-
-        body {
-            font-family: 'Josefin Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5 {
-            font-family: 'Cinzel', serif;
-            margin-top: 0;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        /* Navbar Styles */
-        nav {
-            background-color: var(--bg-dark);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        nav.nav-shadow {
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-primary);
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .book-btn {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            text-decoration: none;
-        }
-
-        .book-btn:hover {
-            opacity: 0.9;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Checklist Section */
-        #checklist {
-            padding-top: 7rem;
-        }
-
-        .checklist-card {
-            background-color: var(--bg-darkgray);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .checklist-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: var(--color-primary);
-            font-size: 1.8rem;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-        }
-
-        .accent {
-            color: var(--color-primary);
-        }
-
-        /* Task Category Styles */
-        .task-category {
-            margin-bottom: 2rem;
-            background-color: var(--bg-dark);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .task-category h3 {
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .task-info {
-            color: var(--text-lightgray);
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        /* Task Item Styles - Made larger for glove use */
-        .task-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .task-item {
-            display: flex;
-            align-items: center;
-            padding: 1rem 0.75rem;
-            border-bottom: 1px solid #333;
-            margin-bottom: 0.5rem;
-            border-radius: 6px;
-            background-color: rgba(30, 30, 30, 0.5);
-            position: relative;
-        }
-
-        .task-item.completed {
-            background-color: rgba(0, 180, 216, 0.1);
-        }
-
-        .task-checkbox {
-            -webkit-appearance: none;
-            appearance: none;
-            background-color: transparent;
-            margin: 0;
-            width: 2rem;
-            height: 2rem;
-            border: 2px solid var(--color-primary);
-            border-radius: 4px;
-            display: grid;
-            place-content: center;
-            margin-right: 1rem;
-            cursor: pointer;
-        }
-
-        .task-checkbox::before {
-            content: "";
-            width: 1.25rem;
-            height: 1.25rem;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1rem 1rem var(--color-primary);
-            transform-origin: center;
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-
-        .task-checkbox:checked::before {
-            transform: scale(1);
-        }
-
-        .task-label {
-            flex-grow: 1;
-            font-size: 1.1rem;
-            user-select: none;
-            cursor: pointer;
-            padding: 0.75rem 0;
-            /* Make the hit target larger */
-        }
-
-        .task-item.completed .task-label {
-            text-decoration: line-through;
-            color: var(--text-lightgray);
-        }
-
-        /* Make entire row clickable for easy touch */
-        .task-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        /* Button Styles */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .action-btn {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            font-size: 1.1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Josefin Sans', sans-serif;
-            transition: opacity 0.3s;
-            min-width: 140px;
-        }
-
-        .action-btn.secondary {
-            background-color: #555;
-        }
-
-        .action-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            margin: 2rem 0;
-            background-color: #333;
-            border-radius: 8px;
-            height: 16px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--color-primary);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-lightgray);
-        }
-
-        /* Responsive CSS */
-        @media (max-width: 767px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                flex-direction: column;
-                background-color: var(--bg-darkgray);
-                padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .button-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .action-btn {
-                width: 80%;
-                margin-bottom: 0.5rem;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-dark);
-            padding: 2rem 0;
-            text-align: center;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <audio id="clickSound" preload="auto">
-        <source
-            src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAADmADi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAQYAAAAAAAAA5gISra3AAAAAAAAAAAAAAAAAAAAAP/7UMQAAAsZH1gcRgAJeSOrhGjAAVhmSxHSSABImboZJMFhBBQMsQYIP0HCgYt/5Q4IMWf/KBhB//8QYTgweDxgAAYMGPgQjgQOD9YPeLB+JB+oGPgQfqgY+BD/8QYQ/yj/lHwIP+UMEH/4g4GO7u7soOLv///////////////////9RcL/1vcN1g//cN0P3cJ7jdZbdL591qDFAcMMrK2trS2MMQZTdQHQAYaNoWKsRpmHXIsLozEHZUyECYVReLQs0GamRWPNva87YpsVBkDgmpUyDLc7Y1WsbM9Ozs7FXDnS0FDiIkxmDslZlkTMzcPqfL5pVDIUxcuXL+pdS5ctRV6l1////NVSpUuuX//s1X//1/////+pMJAQAAsMtFJGhoEG4SjcJRpE/Aj4QIABnJH8iABQQIEBAgIGcn//5iIAEBAQMGeT//nBAgJ/8wEOx8fGmO7u7rjGB8fGmO50z8dkcf//////////////0xBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-            type="audio/mpeg">
-    </audio>
     <nav id="navbar">
         <div class="container">
             <a href="index.html" class="logo">
@@ -403,70 +55,78 @@
         </div>
     </nav>
 
+    <!-- Progress Bar -->
+    <div class="progress-container fixed-progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p class="progress-text fixed-progress-text" id="progressText">0% Complete</p>
+
     <!-- Checklist Section -->
     <section id="checklist">
         <div class="container">
             <h2 class="section-heading">Detailing <span class="accent">Checklist</span></h2>
 
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <p class="progress-text" id="progressText">0% Complete</p>
-
-            <!-- Removed buttons as requested -->
-
-            <div class="checklist-card">
-                <h3 class="checklist-title">Before Starting</h3>
-                <div class="task-category">
-                    <div class="task-list" id="before-starting">
-                        <!-- Tasks will be populated by JavaScript -->
-                    </div>
-                </div>
+            <!-- Service Selection Buttons -->
+            <div class="service-selection" id="serviceSelection">
+                <button class="service-btn express-btn" id="expressBtn">Express Service</button>
+                <button class="service-btn premium-btn" id="premiumBtn">Premium Service</button>
             </div>
 
-            <div class="checklist-card">
-                <h3 class="checklist-title">Interior</h3>
-
-                <div class="task-category">
-                    <h3>Express Interior</h3>
-                    <div class="task-info">Total time: 1-2 hours</div>
-                    <div class="task-list" id="express-interior">
-                        <!-- Tasks will be populated by JavaScript -->
+            <!-- Checklist Content (initially hidden) -->
+            <div id="checklistContent" style="display: none;">
+                <div class="checklist-card">
+                    <h3 class="checklist-title">Before Starting</h3>
+                    <div class="task-category">
+                        <div class="task-list" id="before-starting">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="task-category">
-                    <h3>Premium Interior</h3>
-                    <div class="task-info">Total time: 2.5-3.5 hours</div>
-                    <div class="task-list" id="premium-interior">
-                        <!-- Tasks will be populated by JavaScript -->
+                <div class="checklist-card" id="expressSection">
+                    <h3 class="checklist-title">Express Service</h3>
+
+                    <div class="task-category">
+                        <h3>Interior</h3>
+                        <div class="task-info">Total time: 1-2 hours</div>
+                        <div class="task-list" id="express-interior">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3>Exterior</h3>
+                        <div class="task-info">Total time: 45-60 minutes</div>
+                        <div class="task-list" id="express-exterior">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="checklist-card">
-                <h3 class="checklist-title">Exterior</h3>
+                <div class="checklist-card" id="premiumSection" style="display: none;">
+                    <h3 class="checklist-title">Premium Service</h3>
 
-                <div class="task-category">
-                    <h3>Express Exterior</h3>
-                    <div class="task-info">Total time: 45-60 minutes</div>
-                    <div class="task-list" id="express-exterior">
-                        <!-- Tasks will be populated by JavaScript -->
+                    <div class="task-category">
+                        <h3>Interior</h3>
+                        <div class="task-info">Total time: 2.5-3.5 hours</div>
+                        <div class="task-list" id="premium-interior">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="task-category">
+                        <h3>Exterior</h3>
+                        <div class="task-info">Total time: 2-3 hours</div>
+                        <div class="task-list" id="premium-exterior">
+                            <!-- Tasks will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
 
-                <div class="task-category">
-                    <h3>Premium Exterior</h3>
-                    <div class="task-info">Total time: 2-3 hours</div>
-                    <div class="task-list" id="premium-exterior">
-                        <!-- Tasks will be populated by JavaScript -->
-                    </div>
+                <!-- Single action button at the bottom -->
+                <div class="button-container">
+                    <button class="action-btn" id="clearCheckedBtn2">Clear Checked Items</button>
                 </div>
-            </div>
-
-            <!-- Single action button at the bottom -->
-            <div class="button-container">
-                <button class="action-btn" id="clearCheckedBtn2">Clear Checked Items</button>
             </div>
         </div>
     </section>
@@ -531,15 +191,15 @@
                 "Bag all personal items",
                 "Remove floor mats",
                 "Initial vacuum of entire interior",
-                "Clean dashboard and center console with detail brushes",
-                "Clean air vents with detail brush and compressed air",
+                "Clean dashboard and center console",
+                "Clean air vents",
                 "Deep clean door panels, pockets, and jambs",
                 "Treat and condition leather/vinyl surfaces",
                 "Shampoo fabric seats and carpets",
                 "Steam clean crevices and hard-to-reach areas",
                 "Clean seat tracks and mechanisms",
                 "Clean and polish all interior glass and mirrors",
-                "Add protectant to plastic and vinyl (leather conditioner for leather)",
+                "Add protectant to plastic and seats",
                 "Clean and condition steering wheel",
                 "Treat headliner (spot cleaning as needed)",
                 "Clean seat belts and mechanisms",
@@ -571,14 +231,14 @@
                 "Apply degreaser before and during foaming",
                 "Apply pre-wash foam/soap and let dwell",
                 "Brush seams and emblems, while soaped",
-                "Clean brake calipers and suspension components",
+                "Clean brake calipers and suspension",
                 "Hand wash exterior",
                 "Clay bar using iron decontaminator if needed",
                 "Rinse thoroughly to remove all soap and clay residue",
-                "Dry exterior completely with microfiber towels or air blower",
-                "Polish/machine polish paint to remove minor swirls and scratches",
+                "Dry exterior completely",
+                "Polish/machine polish swirls and scratches",
                 "Apply paint sealant",
-                "Detail exterior trim and restore plastic/rubber components",
+                "Detail exterior trim and restore plastic/rubber",
                 "Clean and treat door jambs",
                 "Clean and polish exterior windows and mirrors",
                 "Clean and polish chrome/metal trim",
@@ -625,26 +285,19 @@
                     `;
                     container.appendChild(taskItem);
 
-                    // Add click event to the checkbox
-                    const checkbox = taskItem.querySelector('.task-checkbox');
-                    checkbox.addEventListener('change', function () {
-                        taskItem.classList.toggle('completed', this.checked);
-                        playClickSound(); // Play sound on checkbox change
+                    // Add click event to the entire task item
+                    taskItem.addEventListener('click', function (e) {
+                        const checkbox = this.querySelector('.task-checkbox');
+                        checkbox.checked = !checkbox.checked;
+                        this.classList.toggle('completed', checkbox.checked);
                         updateProgress();
-                        // Auto-save on every change
                         saveProgress();
                     });
 
-                    // Make entire item clickable for easier mobile use
-                    taskItem.addEventListener('click', function (e) {
-                        // Prevent triggering when clicking the checkbox directly
-                        if (e.target !== checkbox) {
-                            checkbox.checked = !checkbox.checked;
-                            taskItem.classList.toggle('completed', checkbox.checked);
-                            playClickSound(); // Play sound when clicking task item
-                            updateProgress();
-                            saveProgress();
-                        }
+                    // Prevent checkbox click from triggering the task item click
+                    const checkbox = taskItem.querySelector('.task-checkbox');
+                    checkbox.addEventListener('click', function (e) {
+                        e.stopPropagation();
                     });
                 });
             }
@@ -659,9 +312,9 @@
             const checkedCount = Array.from(checkboxes).filter(box => box.checked).length;
             const percent = Math.round((checkedCount / totalTasks) * 100);
 
-            // Update progress bar
+            // Update progress bar using gradient
             const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = `${percent}%`;
+            progressBar.style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent}%, #333 ${percent}%, #333 100%)`;
 
             // Update progress text
             const progressText = document.getElementById('progressText');
@@ -687,79 +340,65 @@
             }
         }
 
-        // Clear checked items
+        // Service selection functionality
+        const serviceSelection = document.getElementById('serviceSelection');
+        const checklistContent = document.getElementById('checklistContent');
+        const expressSection = document.getElementById('expressSection');
+        const premiumSection = document.getElementById('premiumSection');
+        const expressBtn = document.getElementById('expressBtn');
+        const premiumBtn = document.getElementById('premiumBtn');
+
+        // Load saved service type
+        const savedServiceType = localStorage.getItem('serviceType');
+        if (savedServiceType) {
+            serviceSelection.style.display = 'none';
+            checklistContent.style.display = 'block';
+            if (savedServiceType === 'premium') {
+                expressSection.style.display = 'none';
+                premiumSection.style.display = 'block';
+            } else {
+                expressSection.style.display = 'block';
+                premiumSection.style.display = 'none';
+            }
+        }
+
+        // Handle service selection
+        expressBtn.addEventListener('click', function () {
+            serviceSelection.style.display = 'none';
+            checklistContent.style.display = 'block';
+            expressSection.style.display = 'block';
+            premiumSection.style.display = 'none';
+            localStorage.setItem('serviceType', 'express');
+            updateProgress();
+        });
+
+        premiumBtn.addEventListener('click', function () {
+            serviceSelection.style.display = 'none';
+            checklistContent.style.display = 'block';
+            expressSection.style.display = 'none';
+            premiumSection.style.display = 'block';
+            localStorage.setItem('serviceType', 'premium');
+            updateProgress();
+        });
+
+        // Clear checked items function
         function clearCheckedItems() {
             const checkboxes = document.querySelectorAll('.task-checkbox:checked');
             checkboxes.forEach(checkbox => {
                 checkbox.checked = false;
-                checkbox.closest('.task-item').classList.remove('completed');
-            });
-            updateProgress();
-            saveProgress();
-            showNotification("Cleared all checked items");
-        }
-
-        // Reset all items
-        function resetAllItems() {
-            if (confirm("Are you sure you want to reset all progress? This cannot be undone.")) {
-                const checkboxes = document.querySelectorAll('.task-checkbox');
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                    checkbox.closest('.task-item').classList.remove('completed');
-                });
-                updateProgress();
-                saveProgress();
-                showNotification("Reset all progress");
-            }
-        }
-
-        // Play click sound when checkbox is toggled
-        function playClickSound() {
-            const clickSound = document.getElementById('clickSound');
-            if (clickSound) {
-                clickSound.currentTime = 0;
-                clickSound.play().catch(error => {
-                    // Silently handle errors since sound is not critical functionality
-                    console.log("Could not play sound (may require user interaction first):", error);
-                });
-            }
-        }
-        function showNotification(message, isError = false) {
-            console.log(message); // Log to console instead of showing UI notification on every auto-save
-
-            // Only show visual notifications for important actions or errors
-            if (isError || message === "Cleared all checked items") {
-                // Create notification element
-                let notification = document.querySelector('.notification');
-                if (notification) {
-                    notification.remove();
+                const taskItem = checkbox.closest('.task-item');
+                if (taskItem) {
+                    taskItem.classList.remove('completed');
                 }
-
-                notification = document.createElement('div');
-                notification.className = `notification ${isError ? 'error' : 'success'}`;
-                notification.style.position = 'fixed';
-                notification.style.bottom = '20px';
-                notification.style.left = '50%';
-                notification.style.transform = 'translateX(-50%)';
-                notification.style.padding = '12px 24px';
-                notification.style.borderRadius = '4px';
-                notification.style.backgroundColor = isError ? '#d43939' : '#00B4D8';
-                notification.style.color = 'white';
-                notification.style.zIndex = '1000';
-                notification.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
-                notification.textContent = message;
-
-                // Add to body
-                document.body.appendChild(notification);
-
-                // Remove after 3 seconds
-                setTimeout(() => {
-                    notification.remove();
-                }, 3000);
-            }
+            });
+            localStorage.removeItem('checkedItems');
+            localStorage.removeItem('serviceType');
+            serviceSelection.style.display = 'flex';
+            checklistContent.style.display = 'none';
+            updateProgress();
         }
 
-        // Auto-save on change (removed separate save function)
+        // Add event listener to clear button
         document.getElementById('clearCheckedBtn2').addEventListener('click', clearCheckedItems);
 
         // Initialize checklist when the DOM is loaded

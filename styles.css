@@ -591,3 +591,451 @@ footer {
         flex-direction: column;
     }
 }
+
+/* Checklist Section Styles */
+#checklist {
+    padding-top: 9rem; /* Increased to account for fixed progress bar */
+}
+
+/* Fixed Progress Bar Styles */
+.fixed-progress {
+    position: fixed;
+    top: 70px; /* Height of navbar */
+    left: 0;
+    right: 0;
+    background-color: var(--bg-darkgray);
+    padding: 0.5rem 1rem;
+    z-index: 999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    height: 6px;
+    background: linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) 0%, #333 0%, #333 100%);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+.fixed-progress-text {
+    position: fixed;
+    top: 85px; /* Position below the progress bar */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-darkgray);
+    padding: 0.25rem 1rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-lightgray);
+    z-index: 999;
+    margin: 0;
+}
+
+.checklist-card {
+    background-color: var(--bg-darkgray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.checklist-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    font-size: 1.8rem;
+}
+
+/* Task Category Styles */
+.task-category {
+    margin-bottom: 2rem;
+    background-color: var(--bg-dark);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.task-category h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.task-info {
+    color: var(--text-lightgray);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+/* Task Item Styles */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid #333;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    background-color: rgba(30, 30, 30, 0.5);
+    position: relative;
+    cursor: pointer;
+}
+
+.task-item.completed {
+    background-color: rgba(0, 180, 216, 0.1);
+}
+
+.task-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--bg-dark);
+    margin: 0;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    margin-right: 1rem;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+}
+
+.task-checkbox::before {
+    content: "";
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.task-checkbox:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.task-label {
+    flex: 1;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 2;
+    color: var(--font-color);
+}
+
+.task-status {
+    font-size: 0.9rem;
+    color: var(--text-lightgray);
+    margin-left: 1rem;
+}
+
+/* Checklist Progress */
+.checklist-progress {
+    background-color: var(--bg-darkgray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--color-primary);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    color: var(--text-lightgray);
+    font-size: 0.9rem;
+}
+
+/* Checklist Notes */
+.checklist-notes {
+    background-color: var(--bg-darkgray);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.notes-title {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.notes-content {
+    color: var(--text-lightgray);
+    font-style: italic;
+}
+
+/* Checklist Actions */
+.checklist-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.action-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+.action-btn.secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+}
+
+/* Checklist Responsive */
+@media (max-width: 768px) {
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-status {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    .checklist-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+
+    .checklist-card {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .task-category {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .task-item {
+        padding: 0.5rem;
+        margin-bottom: 0.25rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .task-checkbox {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .task-checkbox::before {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .task-label {
+        font-size: 1rem;
+        flex: 1;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .task-info {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .checklist-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .task-category h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .button-container {
+        margin: 1rem 0;
+    }
+
+    .action-btn {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Service Type Toggle */
+.service-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.service-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.service-toggle input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+    background-color: var(--dark-gray);
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    height: 1.6rem;
+    width: 1.6rem;
+    left: 0.2rem;
+    bottom: 0.2rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.service-toggle input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+.service-toggle input:checked + .toggle-slider:before {
+    transform: translateX(2rem);
+}
+
+.toggle-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Mobile styles for toggle */
+@media (max-width: 768px) {
+    .service-toggle-container {
+        margin: 1.5rem 0;
+    }
+
+    .toggle-slider {
+        width: 3.5rem;
+        height: 1.75rem;
+    }
+
+    .toggle-slider:before {
+        height: 1.4rem;
+        width: 1.4rem;
+    }
+
+    .service-toggle input:checked + .toggle-slider:before {
+        transform: translateX(1.75rem);
+    }
+
+    .toggle-label {
+        font-size: 1.1rem;
+    }
+}
+
+/* Service Selection Buttons */
+.service-selection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.service-btn {
+    padding: 1.5rem 3rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.express-btn {
+    background-color: var(--color-primary);
+    color: var(--bg-dark);
+}
+
+.premium-btn {
+    background-color: var(--bg-darkgray);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.service-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+}
+
+/* Mobile styles for service buttons */
+@media (max-width: 768px) {
+    .service-selection {
+        flex-direction: column;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    .service-btn {
+        padding: 1.25rem 2rem;
+        font-size: 1.2rem;
+        width: 100%;
+        min-width: unset;
+    }
+}
