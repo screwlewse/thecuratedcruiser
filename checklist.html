@@ -285,19 +285,13 @@
                     `;
                     container.appendChild(taskItem);
 
-                    // Add click event to the entire task item
+                    // Single click handler for the entire task item
                     taskItem.addEventListener('click', function (e) {
                         const checkbox = this.querySelector('.task-checkbox');
                         checkbox.checked = !checkbox.checked;
                         this.classList.toggle('completed', checkbox.checked);
                         updateProgress();
                         saveProgress();
-                    });
-
-                    // Prevent checkbox click from triggering the task item click
-                    const checkbox = taskItem.querySelector('.task-checkbox');
-                    checkbox.addEventListener('click', function (e) {
-                        e.stopPropagation();
                     });
                 });
             }
@@ -332,11 +326,8 @@
 
             try {
                 localStorage.setItem('curatedCruiserChecklist', JSON.stringify(savedState));
-                // Show temporary success message
-                showNotification("Progress saved");
             } catch (e) {
                 console.error('Error saving state:', e);
-                showNotification("Error saving progress", true);
             }
         }
 
