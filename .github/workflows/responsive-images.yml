@@ -3,10 +3,10 @@ name: Process Images Only
 on:
   push:
     paths:
-      - 'images/src/**'  # Only trigger when files in images/src directory change
-      - '**/*.html'      # Trigger on HTML changes
-      - '**/*.css'       # Trigger on CSS changes
-      - '**/*.js'        # Trigger on JS changes
+      - "images/src/**"  # Only trigger when files in images/src directory change
+      - "**/*.html"      # Trigger on HTML changes
+      - "**/*.css"       # Trigger on CSS changes
+      - "**/*.js"        # Trigger on JS changes
     branches: [ main ]
   workflow_dispatch:     # Allow manual triggering
 
@@ -19,15 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
-          cache: 'npm'
+          node-version: 20.x
+          cache: npm
 
       - name: Install dependencies
         run: |
@@ -76,19 +76,28 @@ jobs:
 
               // Create small version (480px width)
               sharp(filePath)
-                .resize(480)
+                .resize(480, 480, {
+                  fit: 'cover',
+                  position: 'center'
+                })
                 .toFile(path.join(outputDir, `${fileNameWithoutExt}-small${fileExt}`))
                 .catch(err => console.error(`Error processing ${file} for small size:`, err));
 
               // Create medium version (768px width)
               sharp(filePath)
-                .resize(768)
+                .resize(768, 768, {
+                  fit: 'cover',
+                  position: 'center'
+                })
                 .toFile(path.join(outputDir, `${fileNameWithoutExt}-medium${fileExt}`))
                 .catch(err => console.error(`Error processing ${file} for medium size:`, err));
 
               // Create large version (1200px width)
               sharp(filePath)
-                .resize(1200)
+                .resize(1200, 1200, {
+                  fit: 'cover',
+                  position: 'center'
+                })
                 .toFile(path.join(outputDir, `${fileNameWithoutExt}-large${fileExt}`))
                 .catch(err => console.error(`Error processing ${file} for large size:`, err));
 
