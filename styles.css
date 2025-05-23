@@ -337,27 +337,81 @@ nav .container {
 }
 
 .pricing-card {
-    background-color: var(--bg-dark);
-    border-radius: 8px;
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease;
 }
 
 .card-header {
+    background-color: var(--bg-dark);
+    border-radius: 8px 8px 0 0;
+    padding: 1rem;
     text-align: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
     border-bottom: 1px solid var(--bg-darkgray);
 }
 
+.card-body {
+    background-color: var(--bg-dark);
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* Add rounded bottom corners when there's no footer */
+.pricing-card.no-footer .card-body {
+    border-radius: 0 0 8px 8px;
+}
+
+.card-footer {
+    background-color: var(--color-primary);
+    border-radius: 0 0 8px 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-footer a {
+    color: var(--bg-darkgray);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.card-footer a:hover {
+    color: var(--font-color);
+    opacity: 0.9;
+}
+
+.book-service {
+    display: block;
+    color: var(--bg-darkgray);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.book-service:hover {
+    color: var(--font-color);
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
 .card-header h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: var(--color-primary);
 }
 
 .card-subtitle {
     color: var(--text-lightgray);
     font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.time-estimate {
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
 }
 
 .service-list {
@@ -400,17 +454,30 @@ nav .container {
 
 .vehicle-type {
     font-weight: bold;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.original-price {
+    color: var(--text-lightgray);
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.discounted-price {
     color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .time {
     color: var(--text-lightgray);
     font-size: 0.9rem;
-}
-
-.price {
-    font-weight: bold;
-    color: var(--color-primary);
 }
 
 /* Add-ons Section */
@@ -429,12 +496,16 @@ nav .container {
 }
 
 .addons-grid .pricing-card {
-    padding: 1rem;
+    padding: 0;
 }
 
 .addons-grid .card-header {
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+}
+
+.addons-grid .card-body {
+    padding-top: 0;
 }
 
 .addons-grid .card-header h3 {
@@ -491,10 +562,6 @@ footer {
 
     .pricing-card {
         padding: 2rem;
-    }
-
-    .card-header {
-        padding-bottom: 1.5rem;
     }
 }
 
