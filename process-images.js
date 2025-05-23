@@ -23,19 +23,28 @@ if (fs.existsSync(sourceDir)) {
 
     // Create small version (480px width)
     sharp(filePath)
-      .resize(480)
+      .resize(480, 480, {
+        fit: 'cover',
+        position: 'center'
+      })
       .toFile(path.join(outputDir, `${fileNameWithoutExt}-small${fileExt}`))
       .catch(err => console.error(`Error processing ${file} for small size:`, err));
 
     // Create medium version (768px width)
     sharp(filePath)
-      .resize(768)
+      .resize(768, 768, {
+        fit: 'cover',
+        position: 'center'
+      })
       .toFile(path.join(outputDir, `${fileNameWithoutExt}-medium${fileExt}`))
       .catch(err => console.error(`Error processing ${file} for medium size:`, err));
 
     // Create large version (1200px width)
     sharp(filePath)
-      .resize(1200)
+      .resize(1200, 1200, {
+        fit: 'cover',
+        position: 'center'
+      })
       .toFile(path.join(outputDir, `${fileNameWithoutExt}-large${fileExt}`))
       .catch(err => console.error(`Error processing ${file} for large size:`, err));
 
