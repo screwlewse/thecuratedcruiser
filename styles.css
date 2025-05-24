@@ -24,12 +24,14 @@ body {
     color: var(--font-color);
     margin: 0;
     padding: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5 {
     font-family: var(--font-family-title);
     color: var(--font-color);
+    line-height: 1.3;
 }
 
 h3 {
@@ -444,7 +446,7 @@ nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     border-bottom: 1px solid var(--bg-darkgray);
 }
 
@@ -454,6 +456,8 @@ nav .container {
 
 .vehicle-type {
     font-weight: bold;
+    color: var(--font-color);
+    font-size: 1.1rem;
 }
 
 .price {
@@ -466,13 +470,13 @@ nav .container {
 .original-price {
     color: var(--text-lightgray);
     text-decoration: line-through;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .discounted-price {
     color: var(--color-primary);
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
 }
 
 .time {
@@ -676,7 +680,7 @@ footer {
     }
 
     .card-header h3 {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
     }
 
     .price-list {
@@ -686,10 +690,42 @@ footer {
     .price-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.25rem;
+        gap: 0.5rem;
+        padding: 1rem 0;
+    }
+
+    .vehicle-type {
+        font-size: 1.2rem;
+    }
+
+    .price {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .original-price {
+        font-size: 1.1rem;
+    }
+
+    .discounted-price {
+        font-size: 1.6rem;
     }
 
     .service-list li {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-subtitle {
+        font-size: 1rem;
+    }
+
+    .time-estimate {
+        font-size: 1rem;
+    }
+
+    .book-service {
+        font-size: 1.2rem;
+        padding: 0.75rem;
     }
 }
