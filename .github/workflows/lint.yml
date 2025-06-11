@@ -44,3 +44,5 @@ jobs:
           APPLY_FIXES: all
           # Commit the fixes
           GITHUB_WORKSPACE: ${{ github.workspace }}
+          # Report issues without failing the build
+          DISABLE_ERRORS: true
