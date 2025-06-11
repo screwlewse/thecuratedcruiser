@@ -33,3 +33,14 @@ jobs:
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Enable auto-fix for web files
+          VALIDATE_ALL_CODEBASE: true
+          FIX_PRETTIER_CSS: true
+          FIX_PRETTIER_HTML: true
+          FIX_PRETTIER_JAVASCRIPT: true
+          FIX_PRETTIER_JS: true
+          FIX_PRETTIER_MARKDOWN: true
+          # Apply fixes from all enabled linters
+          APPLY_FIXES: all
+          # Commit the fixes
+          GITHUB_WORKSPACE: ${{ github.workspace }}
