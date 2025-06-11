@@ -1,23 +1,40 @@
-/* Curated Cruiser Custom CSS */
+/*******************************
+ * Table of Contents:
+ * 1. CSS Variables (Root)
+ * 2. Base Styles & Typography
+ * 3. Layout & Utilities
+ * 4. Components
+ *    - Buttons
+ *    - Navigation
+ *    - Cards
+ *    - Lists
+ * 5. Sections
+ *    - Hero
+ *    - Services
+ *    - Pricing
+ *    - Add-ons
+ *    - About
+ * 6. Footer
+ * 7. Media Queries
+ *******************************/
 
-/* Basic smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Root Variables */
+/* 1. CSS Variables (Root) */
 :root {
   --bg-dark: #121212;
   --bg-darkgray: #1e1e1e;
   --font-color: #dcd6cb;
   --text-lightgray: #a0a0a0;
   --color-primary: #00b4d8;
-  --grid-maxWidth: 1200px;
+  --grid-max-width: 1200px;
   --font-family-sans: "Josefin Sans", sans-serif;
   --font-family-title: "Cinzel", serif;
 }
 
-/* Base Styles */
+/* 2. Base Styles & Typography */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-family-sans);
   background-color: var(--bg-dark);
@@ -28,11 +45,7 @@ body {
   line-height: 1.6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   font-family: var(--font-family-title);
   color: var(--font-color);
   line-height: 1.3;
@@ -42,8 +55,13 @@ h3 {
   font-size: 1.5rem;
 }
 
+a:visited {
+  color: inherit;
+}
+
+/* 3. Layout & Utilities */
 .container {
-  max-width: var(--grid-maxWidth);
+  max-width: var(--grid-max-width);
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -52,29 +70,49 @@ section {
   padding: 5rem 0;
 }
 
-a:visited {
-  color: inherit;
-}
-
-/* Utility Classes */
-.text-center {
-  text-align: center;
-}
-
-.mb-1 {
-  margin-bottom: 1rem;
-}
-
-.mb-2 {
-  margin-bottom: 2rem;
-}
-
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
 .py-20 {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
-/* Navbar Styles */
+/* 4. Components */
+
+/* Buttons */
+.book-btn {
+  background-color: var(--color-primary);
+  color: var(--bg-darkgray);
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.book-btn:hover {
+  color: var(--font-color);
+  background-color: rgb(0 0 0 / 10%);
+}
+
+.book-service {
+  display: block;
+  color: var(--bg-darkgray);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.book-service:hover {
+  color: var(--font-color);
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Navigation */
 nav {
   background-color: var(--bg-dark);
   position: fixed;
@@ -86,7 +124,7 @@ nav {
 }
 
 nav.nav-shadow {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
 }
 
 nav .container {
@@ -118,6 +156,7 @@ nav .container {
 
 .nav-links a:hover {
   color: var(--color-primary);
+  background-color: rgb(0 0 0 / 5%);
 }
 
 .nav-links a::after {
@@ -135,8 +174,7 @@ nav .container {
   width: 100%;
 }
 
-.nav-links .book-btn,
-.book-btn {
+.nav-links .book-btn {
   background-color: var(--color-primary);
   color: var(--bg-darkgray);
   padding: 0.6rem 1.25rem;
@@ -146,9 +184,9 @@ nav .container {
   transition: opacity 0.3s;
 }
 
-.nav-links .book-btn:hover,
-.book-btn:hover {
+.nav-links .book-btn:hover {
   color: var(--font-color);
+  background-color: rgb(0 0 0 / 10%);
 }
 
 .menu-toggle {
@@ -159,6 +197,74 @@ nav .container {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+/* Cards */
+.pricing-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.card-header {
+  background-color: var(--bg-dark);
+  border-radius: 8px 8px 0 0;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--bg-darkgray);
+}
+
+.card-header h3 {
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+}
+
+.card-body {
+  background-color: var(--bg-dark);
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.card-footer {
+  background-color: var(--color-primary);
+  border-radius: 0 0 8px 8px;
+  padding: 1rem;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.pricing-card.no-footer .card-body {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Lists */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.service-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-lightgray);
+}
+
+.service-list li::before {
+  content: "•";
+  color: var(--color-primary);
+  position: absolute;
+  left: 0;
+}
+
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 5. Sections */
 
 /* Hero Section */
 #hero {
@@ -202,7 +308,7 @@ nav .container {
 .testimonials-link {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
 }
 
 .testimonials-link p {
@@ -228,7 +334,7 @@ nav .container {
 .hero-image img {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
 }
 
 /* Services Section */
@@ -271,7 +377,7 @@ nav .container {
 }
 
 .promotion-section {
-  background-color: rgba(18, 18, 18, 0.5);
+  background-color: rgb(18 18 18 / 50%);
   padding: 1.5rem;
   border-radius: 8px;
   margin-bottom: 1.5rem;
@@ -292,8 +398,7 @@ nav .container {
 .promotion-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 2rem 0;
-  text-align: left;
+  margin: 0 0 2rem;
 }
 
 .promotion-list li {
@@ -309,6 +414,7 @@ nav .container {
 
 .promotion-cta {
   text-align: center;
+  margin: 0 0 1.5rem;
 }
 
 .promotion-cta p {
@@ -343,75 +449,10 @@ nav .container {
   margin-bottom: 3rem;
 }
 
-.pricing-card {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease;
-}
-
-.card-header {
-  background-color: var(--bg-dark);
-  border-radius: 8px 8px 0 0;
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--bg-darkgray);
-}
-
-.card-body {
-  background-color: var(--bg-dark);
-  padding: 1.5rem;
-  flex: 1;
-}
-
-/* Add rounded bottom corners when there's no footer */
-.pricing-card.no-footer .card-body {
-  border-radius: 0 0 8px 8px;
-}
-
-.card-footer {
-  background-color: var(--color-primary);
-  border-radius: 0 0 8px 8px;
-  padding: 1rem;
-  text-align: center;
-}
-
-.card-footer a {
-  color: var(--bg-darkgray);
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 1.3rem;
-}
-
-.card-footer a:hover {
-  color: var(--font-color);
-  opacity: 0.9;
-}
-
-.book-service {
-  display: block;
-  color: var(--bg-darkgray);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.1rem;
-  padding: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.book-service:hover {
-  color: var(--font-color);
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.card-header h3 {
-  margin-bottom: 0.25rem;
-  color: var(--color-primary);
-}
-
 .card-subtitle {
   color: var(--text-lightgray);
   font-size: 0.9rem;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.5rem;
 }
 
 .time-estimate {
@@ -419,44 +460,6 @@ nav .container {
   font-size: 0.9rem;
   font-weight: 500;
   margin: 0;
-}
-
-.service-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-}
-
-.service-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-lightgray);
-}
-
-.service-list li::before {
-  content: "•";
-  color: var(--color-primary);
-  position: absolute;
-  left: 0;
-}
-
-.price-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.price-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--bg-darkgray);
-}
-
-.price-item:last-child {
-  border-bottom: none;
 }
 
 .vehicle-type {
@@ -530,7 +533,7 @@ nav .container {
   display: none;
 }
 
-/* Footer */
+/* 6. Footer */
 footer {
   background-color: var(--bg-darkgray);
   padding: 2rem 0;
@@ -553,14 +556,8 @@ footer {
   color: var(--color-primary);
 }
 
-/* Responsive Styles */
-@media (min-width: 576px) {
-  .container {
-    padding: 0 2rem;
-  }
-}
-
-@media (min-width: 768px) {
+/* 7. Media Queries */
+@media (width >= 768px) {
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -574,39 +571,24 @@ footer {
   }
 }
 
-@media (min-width: 992px) {
+@media (width >= 992px) {
   .container {
     padding: 0 2.5rem;
   }
-  .addons-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
-@media (min-width: 1200px) {
+@media (width >= 1200px) {
   .container {
     padding: 0 3rem;
   }
 }
 
-@media (max-width: 767px) {
+@media (width <= 768px) {
   .container {
     padding: 0 1rem;
   }
 
-  .promotion-container {
-    max-width: 100%;
-    margin: 0;
-  }
-
-  .promotion-card {
-    padding: 1.5rem 1rem;
-  }
-
-  .promotion-section {
-    padding: 1.25rem 1rem;
-  }
-
+  /* Mobile Navigation */
   .nav-links {
     display: none;
     position: fixed;
@@ -618,8 +600,8 @@ footer {
     flex-direction: column;
     gap: 0;
     width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
   }
 
   .nav-links.active {
@@ -628,7 +610,7 @@ footer {
 
   .nav-links li {
     width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
   }
 
   .nav-links li:last-child {
@@ -645,7 +627,7 @@ footer {
   }
 
   .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgb(255 255 255 / 5%);
   }
 
   .nav-links .book-btn {
@@ -657,13 +639,14 @@ footer {
   }
 
   .nav-links .book-btn:hover {
-    background-color: rgba(0, 180, 216, 0.1);
+    background-color: rgb(0 180 216 / 10%);
   }
 
   .menu-toggle {
     display: block;
   }
 
+  /* Mobile Hero */
   .hero-content {
     flex-direction: column;
   }
@@ -676,6 +659,7 @@ footer {
     font-size: 2rem;
   }
 
+  /* Mobile Cards */
   .pricing-card {
     padding: 1.25rem;
   }
@@ -688,6 +672,7 @@ footer {
     font-size: 1.4rem;
   }
 
+  /* Mobile Pricing */
   .price-list {
     gap: 0.5rem;
   }
@@ -716,6 +701,7 @@ footer {
     font-size: 1.6rem;
   }
 
+  /* Mobile Services */
   .service-list li {
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -732,5 +718,11 @@ footer {
   .book-service {
     font-size: 1.2rem;
     padding: 0.75rem;
+  }
+}
+
+@media (width <= 576px) {
+  .container {
+    padding: 0 1rem;
   }
 }
