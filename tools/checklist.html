@@ -1,37 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detailing Checklist | Curated Cruiser</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Interactive detailing checklist for Curated Cruiser mobile auto detailing service in Castro Valley & San Ramon, CA.">
-    <meta name="keywords" content="auto detailing checklist, mobile detailing, car detailing process, Curated Cruiser">
+    <meta
+      name="description"
+      content="Interactive detailing checklist for Curated Cruiser mobile auto detailing service in Castro Valley & San Ramon, CA."
+    />
+    <meta
+      name="keywords"
+      content="auto detailing checklist, mobile detailing, car detailing process, Curated Cruiser"
+    />
 
     <!-- Open Graph / Social Media Tags -->
-    <meta property="og:title" content="Detailing Checklist | Curated Cruiser">
-    <meta property="og:description" content="Interactive detailing checklist for professional auto detailing service.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://curatedcruiser.com/detailing-checklist">
-    <meta property="og:image" content="https://curatedcruiser.com/images/og-image.jpg">
+    <meta property="og:title" content="Detailing Checklist | Curated Cruiser" />
+    <meta
+      property="og:description"
+      content="Interactive detailing checklist for professional auto detailing service."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://curatedcruiser.com/detailing-checklist"
+    />
+    <meta
+      property="og:image"
+      content="https://curatedcruiser.com/images/og-image.jpg"
+    />
 
     <!-- Favicon -->
     <link rel="icon" href="../favicon.ico">
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+  <body>
     <nav id="navbar">
         <div class="container">
             <a href="../index.html" class="logo">
@@ -56,344 +71,363 @@
 
     <!-- Progress Bar -->
     <div class="progress-container fixed-progress">
-        <div class="progress-bar" id="progressBar"></div>
+      <div class="progress-bar" id="progressBar"></div>
     </div>
-    <p class="progress-text fixed-progress-text" id="progressText">0% Complete</p>
+    <p class="progress-text fixed-progress-text" id="progressText">
+      0% Complete
+    </p>
 
     <!-- Checklist Section -->
     <section id="checklist">
-        <div class="container">
-            <h2 class="section-heading">Detailing <span class="accent">Checklist</span></h2>
+      <div class="container">
+        <h2 class="section-heading">
+          Detailing <span class="accent">Checklist</span>
+        </h2>
 
-            <!-- Service Selection Buttons -->
-            <div class="service-selection" id="serviceSelection">
-                <button class="service-btn express-btn" id="expressBtn">Express Service</button>
-                <button class="service-btn premium-btn" id="premiumBtn">Premium Service</button>
-            </div>
-
-            <!-- Checklist Content (initially hidden) -->
-            <div id="checklistContent" style="display: none;">
-                <div class="checklist-card">
-                    <h3 class="checklist-title">Before Starting</h3>
-                    <div class="task-category">
-                        <div class="task-list" id="before-starting">
-                            <!-- Tasks will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="checklist-card" id="expressSection">
-                    <h3 class="checklist-title">Express Service</h3>
-
-                    <div class="task-category">
-                        <h3>Interior</h3>
-                        <div class="task-info">Total time: 1-2 hours</div>
-                        <div class="task-list" id="express-interior">
-                            <!-- Tasks will be populated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <div class="task-category">
-                        <h3>Exterior</h3>
-                        <div class="task-info">Total time: 45-60 minutes</div>
-                        <div class="task-list" id="express-exterior">
-                            <!-- Tasks will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="checklist-card" id="premiumSection" style="display: none;">
-                    <h3 class="checklist-title">Premium Service</h3>
-
-                    <div class="task-category">
-                        <h3>Interior</h3>
-                        <div class="task-info">Total time: 2.5-3.5 hours</div>
-                        <div class="task-list" id="premium-interior">
-                            <!-- Tasks will be populated by JavaScript -->
-                        </div>
-                    </div>
-
-                    <div class="task-category">
-                        <h3>Exterior</h3>
-                        <div class="task-info">Total time: 2-3 hours</div>
-                        <div class="task-list" id="premium-exterior">
-                            <!-- Tasks will be populated by JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single action button at the bottom -->
-                <div class="button-container">
-                    <button class="action-btn" id="clearCheckedBtn2">Clear Checked Items</button>
-                </div>
-            </div>
+        <!-- Service Selection Buttons -->
+        <div class="service-selection" id="serviceSelection">
+          <button class="service-btn express-btn" id="expressBtn">
+            Express Service
+          </button>
+          <button class="service-btn premium-btn" id="premiumBtn">
+            Premium Service
+          </button>
         </div>
+
+        <!-- Checklist Content (initially hidden) -->
+        <div id="checklistContent" style="display: none">
+          <div class="checklist-card">
+            <h3 class="checklist-title">Before Starting</h3>
+            <div class="task-category">
+              <div class="task-list" id="before-starting">
+                <!-- Tasks will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-card" id="expressSection">
+            <h3 class="checklist-title">Express Service</h3>
+
+            <div class="task-category">
+              <h3>Interior</h3>
+              <div class="task-info">Total time: 1-2 hours</div>
+              <div class="task-list" id="express-interior">
+                <!-- Tasks will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="task-category">
+              <h3>Exterior</h3>
+              <div class="task-info">Total time: 45-60 minutes</div>
+              <div class="task-list" id="express-exterior">
+                <!-- Tasks will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <div class="checklist-card" id="premiumSection" style="display: none">
+            <h3 class="checklist-title">Premium Service</h3>
+
+            <div class="task-category">
+              <h3>Interior</h3>
+              <div class="task-info">Total time: 2.5-3.5 hours</div>
+              <div class="task-list" id="premium-interior">
+                <!-- Tasks will be populated by JavaScript -->
+              </div>
+            </div>
+
+            <div class="task-category">
+              <h3>Exterior</h3>
+              <div class="task-info">Total time: 2-3 hours</div>
+              <div class="task-list" id="premium-exterior">
+                <!-- Tasks will be populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Single action button at the bottom -->
+          <div class="button-container">
+            <button class="action-btn" id="clearCheckedBtn2">
+              Clear Checked Items
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>© 2025 Curated Cruiser. All rights reserved.</p>
-            <p style="color: var(--text-lightgray);">Mobile Auto Detailing in Castro Valley and San Ramon, CA</p>
-        </div>
+      <div class="container">
+        <p>© 2025 Curated Cruiser. All rights reserved.</p>
+        <p style="color: var(--text-lightgray)">
+          Mobile Auto Detailing in Castro Valley and San Ramon, CA
+        </p>
+      </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        // Navigation scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-shadow');
-            } else {
-                navbar.classList.remove('nav-shadow');
-            }
+      // Navigation scroll effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("nav-shadow");
+        } else {
+          navbar.classList.remove("nav-shadow");
+        }
+      });
+
+      // Mobile menu toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
         });
+      });
 
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
+      // Checklist Data
+      const checklistData = {
+        "before-starting": [
+          "Explanation to customer",
+          "Inspection and pictures",
+          "Send pictures to customer",
+        ],
+        "express-interior": [
+          "Bag all personal items",
+          "Remove floor mats",
+          "Initial vacuum of entire interior",
+          "Wipe down dashboard and center console",
+          "Basic cleaning of door panels",
+          "Clean all interior glass and mirrors",
+          "Quick wipe of plastic and vinyl surfaces",
+          "Clean and dress floor mats",
+          "Final spot vacuum",
+          "Scent",
+          "Return floor mats to vehicle",
+          "After photos",
+        ],
+        "premium-interior": [
+          "Bag all personal items",
+          "Remove floor mats",
+          "Initial vacuum of entire interior",
+          "Clean dashboard and center console",
+          "Clean air vents",
+          "Deep clean door panels, pockets, and jambs",
+          "Treat and condition leather/vinyl surfaces",
+          "Shampoo fabric seats and carpets",
+          "Steam clean crevices and hard-to-reach areas",
+          "Clean seat tracks and mechanisms",
+          "Clean and polish all interior glass and mirrors",
+          "Add protectant to plastic and seats",
+          "Clean and condition steering wheel",
+          "Treat headliner (spot cleaning as needed)",
+          "Clean seat belts and mechanisms",
+          "Apply odor treatment/air freshener",
+          "Deep clean and dress floor mats",
+          "Final spot vacuum",
+          "Scent",
+          "Return floor mats to vehicle",
+          "Final vacuum and detailed inspection",
+          "After photos",
+        ],
+        "express-exterior": [
+          "Clean wheels and tires",
+          "Apply degreaser if needed",
+          "Apply pre-wash foam/soap and let dwell",
+          "Brush seams and emblems, while soaped",
+          "Hand wash exterior",
+          "Rinse",
+          "Apply Spray wax",
+          "Final Rinse",
+          "Dry exterior",
+          "Clean exterior windows and mirrors",
+          "Apply tire and trim dressing",
+          "Quick wipe down exterior trim and door jambs",
+          'Final inspection and "after" photos',
+        ],
+        "premium-exterior": [
+          "Clean wheels and tires",
+          "Apply degreaser before and during foaming",
+          "Apply pre-wash foam/soap and let dwell",
+          "Brush seams and emblems, while soaped",
+          "Clean brake calipers and suspension",
+          "Hand wash exterior",
+          "Clay bar using iron decontaminator if needed",
+          "Rinse thoroughly to remove all soap and clay residue",
+          "Dry exterior completely",
+          "Polish/machine polish swirls and scratches",
+          "Apply paint sealant",
+          "Detail exterior trim and restore plastic/rubber",
+          "Clean and treat door jambs",
+          "Clean and polish exterior windows and mirrors",
+          "Clean and polish chrome/metal trim",
+          "Apply tire dressing to tires and trim and wipe down",
+          'Final inspection and "after" photos',
+        ],
+      };
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+      // Total task count for progress calculation
+      let totalTasks = 0;
+      for (const category in checklistData) {
+        totalTasks += checklistData[category].length;
+      }
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Checklist Data
-        const checklistData = {
-            "before-starting": [
-                "Explanation to customer",
-                "Inspection and pictures",
-                "Send pictures to customer"
-            ],
-            "express-interior": [
-                "Bag all personal items",
-                "Remove floor mats",
-                "Initial vacuum of entire interior",
-                "Wipe down dashboard and center console",
-                "Basic cleaning of door panels",
-                "Clean all interior glass and mirrors",
-                "Quick wipe of plastic and vinyl surfaces",
-                "Clean and dress floor mats",
-                "Final spot vacuum",
-                "Scent",
-                "Return floor mats to vehicle",
-                "After photos"
-            ],
-            "premium-interior": [
-                "Bag all personal items",
-                "Remove floor mats",
-                "Initial vacuum of entire interior",
-                "Clean dashboard and center console",
-                "Clean air vents",
-                "Deep clean door panels, pockets, and jambs",
-                "Treat and condition leather/vinyl surfaces",
-                "Shampoo fabric seats and carpets",
-                "Steam clean crevices and hard-to-reach areas",
-                "Clean seat tracks and mechanisms",
-                "Clean and polish all interior glass and mirrors",
-                "Add protectant to plastic and seats",
-                "Clean and condition steering wheel",
-                "Treat headliner (spot cleaning as needed)",
-                "Clean seat belts and mechanisms",
-                "Apply odor treatment/air freshener",
-                "Deep clean and dress floor mats",
-                "Final spot vacuum",
-                "Scent",
-                "Return floor mats to vehicle",
-                "Final vacuum and detailed inspection",
-                "After photos"
-            ],
-            "express-exterior": [
-                "Clean wheels and tires",
-                "Apply degreaser if needed",
-                "Apply pre-wash foam/soap and let dwell",
-                "Brush seams and emblems, while soaped",
-                "Hand wash exterior",
-                "Rinse",
-                "Apply Spray wax",
-                "Final Rinse",
-                "Dry exterior",
-                "Clean exterior windows and mirrors",
-                "Apply tire and trim dressing",
-                "Quick wipe down exterior trim and door jambs",
-                "Final inspection and \"after\" photos"
-            ],
-            "premium-exterior": [
-                "Clean wheels and tires",
-                "Apply degreaser before and during foaming",
-                "Apply pre-wash foam/soap and let dwell",
-                "Brush seams and emblems, while soaped",
-                "Clean brake calipers and suspension",
-                "Hand wash exterior",
-                "Clay bar using iron decontaminator if needed",
-                "Rinse thoroughly to remove all soap and clay residue",
-                "Dry exterior completely",
-                "Polish/machine polish swirls and scratches",
-                "Apply paint sealant",
-                "Detail exterior trim and restore plastic/rubber",
-                "Clean and treat door jambs",
-                "Clean and polish exterior windows and mirrors",
-                "Clean and polish chrome/metal trim",
-                "Apply tire dressing to tires and trim and wipe down",
-                "Final inspection and \"after\" photos"
-            ]
-        };
-
-        // Total task count for progress calculation
-        let totalTasks = 0;
-        for (const category in checklistData) {
-            totalTasks += checklistData[category].length;
+      // Initialize checklist from localStorage or default data
+      function initializeChecklist() {
+        // Try to load saved state from localStorage
+        let savedState;
+        try {
+          savedState =
+            JSON.parse(localStorage.getItem("curatedCruiserChecklist")) || {};
+        } catch (e) {
+          console.error("Error loading saved state:", e);
+          savedState = {};
         }
 
-        // Initialize checklist from localStorage or default data
-        function initializeChecklist() {
-            // Try to load saved state from localStorage
-            let savedState;
-            try {
-                savedState = JSON.parse(localStorage.getItem('curatedCruiserChecklist')) || {};
-            } catch (e) {
-                console.error('Error loading saved state:', e);
-                savedState = {};
-            }
+        // For each category, create the task items
+        for (const [categoryId, tasks] of Object.entries(checklistData)) {
+          const container = document.getElementById(categoryId);
+          if (!container) continue;
 
-            // For each category, create the task items
-            for (const [categoryId, tasks] of Object.entries(checklistData)) {
-                const container = document.getElementById(categoryId);
-                if (!container) continue;
+          // Clear the container first
+          container.innerHTML = "";
 
-                // Clear the container first
-                container.innerHTML = '';
+          // Add each task to the container
+          tasks.forEach((task, index) => {
+            const taskId = `${categoryId}-${index}`;
+            const isChecked = savedState[taskId] === true;
 
-                // Add each task to the container
-                tasks.forEach((task, index) => {
-                    const taskId = `${categoryId}-${index}`;
-                    const isChecked = savedState[taskId] === true;
-
-                    const taskItem = document.createElement('div');
-                    taskItem.className = `task-item ${isChecked ? 'completed' : ''}`;
-                    taskItem.innerHTML = `
-                        <input type="checkbox" id="${taskId}" class="task-checkbox" ${isChecked ? 'checked' : ''}>
+            const taskItem = document.createElement("div");
+            taskItem.className = `task-item ${isChecked ? "completed" : ""}`;
+            taskItem.innerHTML = `
+                        <input type="checkbox" id="${taskId}" class="task-checkbox" ${isChecked ? "checked" : ""}>
                         <label for="${taskId}" class="task-label">${task}</label>
                     `;
-                    container.appendChild(taskItem);
+            container.appendChild(taskItem);
 
-                    // Single click handler for the entire task item
-                    taskItem.addEventListener('click', function (e) {
-                        const checkbox = this.querySelector('.task-checkbox');
-                        checkbox.checked = !checkbox.checked;
-                        this.classList.toggle('completed', checkbox.checked);
-                        updateProgress();
-                        saveProgress();
-                    });
-                });
-            }
-
-            // Initial progress update
-            updateProgress();
-        }
-
-        // Update progress bar
-        function updateProgress() {
-            const checkboxes = document.querySelectorAll('.task-checkbox');
-            const checkedCount = Array.from(checkboxes).filter(box => box.checked).length;
-            const percent = Math.round((checkedCount / totalTasks) * 100);
-
-            // Update progress bar using gradient
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent}%, #333 ${percent}%, #333 100%)`;
-
-            // Update progress text
-            const progressText = document.getElementById('progressText');
-            progressText.textContent = `${percent}% Complete (${checkedCount}/${totalTasks} tasks)`;
-        }
-
-        // Save progress to localStorage
-        function saveProgress() {
-            const checkboxes = document.querySelectorAll('.task-checkbox');
-            const savedState = {};
-
-            checkboxes.forEach(checkbox => {
-                savedState[checkbox.id] = checkbox.checked;
+            // Single click handler for the entire task item
+            taskItem.addEventListener("click", function (e) {
+              const checkbox = this.querySelector(".task-checkbox");
+              checkbox.checked = !checkbox.checked;
+              this.classList.toggle("completed", checkbox.checked);
+              updateProgress();
+              saveProgress();
             });
-
-            try {
-                localStorage.setItem('curatedCruiserChecklist', JSON.stringify(savedState));
-            } catch (e) {
-                console.error('Error saving state:', e);
-            }
+          });
         }
 
-        // Service selection functionality
-        const serviceSelection = document.getElementById('serviceSelection');
-        const checklistContent = document.getElementById('checklistContent');
-        const expressSection = document.getElementById('expressSection');
-        const premiumSection = document.getElementById('premiumSection');
-        const expressBtn = document.getElementById('expressBtn');
-        const premiumBtn = document.getElementById('premiumBtn');
+        // Initial progress update
+        updateProgress();
+      }
 
-        // Load saved service type
-        const savedServiceType = localStorage.getItem('serviceType');
-        if (savedServiceType) {
-            serviceSelection.style.display = 'none';
-            checklistContent.style.display = 'block';
-            if (savedServiceType === 'premium') {
-                expressSection.style.display = 'none';
-                premiumSection.style.display = 'block';
-            } else {
-                expressSection.style.display = 'block';
-                premiumSection.style.display = 'none';
-            }
-        }
+      // Update progress bar
+      function updateProgress() {
+        const checkboxes = document.querySelectorAll(".task-checkbox");
+        const checkedCount = Array.from(checkboxes).filter(
+          (box) => box.checked,
+        ).length;
+        const percent = Math.round((checkedCount / totalTasks) * 100);
 
-        // Handle service selection
-        expressBtn.addEventListener('click', function () {
-            serviceSelection.style.display = 'none';
-            checklistContent.style.display = 'block';
-            expressSection.style.display = 'block';
-            premiumSection.style.display = 'none';
-            localStorage.setItem('serviceType', 'express');
-            updateProgress();
+        // Update progress bar using gradient
+        const progressBar = document.getElementById("progressBar");
+        progressBar.style.background = `linear-gradient(to right, var(--color-primary) 0%, var(--color-primary) ${percent}%, #333 ${percent}%, #333 100%)`;
+
+        // Update progress text
+        const progressText = document.getElementById("progressText");
+        progressText.textContent = `${percent}% Complete (${checkedCount}/${totalTasks} tasks)`;
+      }
+
+      // Save progress to localStorage
+      function saveProgress() {
+        const checkboxes = document.querySelectorAll(".task-checkbox");
+        const savedState = {};
+
+        checkboxes.forEach((checkbox) => {
+          savedState[checkbox.id] = checkbox.checked;
         });
 
-        premiumBtn.addEventListener('click', function () {
-            serviceSelection.style.display = 'none';
-            checklistContent.style.display = 'block';
-            expressSection.style.display = 'none';
-            premiumSection.style.display = 'block';
-            localStorage.setItem('serviceType', 'premium');
-            updateProgress();
-        });
-
-        // Clear checked items function
-        function clearCheckedItems() {
-            const checkboxes = document.querySelectorAll('.task-checkbox:checked');
-            checkboxes.forEach(checkbox => {
-                checkbox.checked = false;
-                const taskItem = checkbox.closest('.task-item');
-                if (taskItem) {
-                    taskItem.classList.remove('completed');
-                }
-            });
-            localStorage.removeItem('checkedItems');
-            localStorage.removeItem('serviceType');
-            serviceSelection.style.display = 'flex';
-            checklistContent.style.display = 'none';
-            updateProgress();
+        try {
+          localStorage.setItem(
+            "curatedCruiserChecklist",
+            JSON.stringify(savedState),
+          );
+        } catch (e) {
+          console.error("Error saving state:", e);
         }
+      }
 
-        // Add event listener to clear button
-        document.getElementById('clearCheckedBtn2').addEventListener('click', clearCheckedItems);
+      // Service selection functionality
+      const serviceSelection = document.getElementById("serviceSelection");
+      const checklistContent = document.getElementById("checklistContent");
+      const expressSection = document.getElementById("expressSection");
+      const premiumSection = document.getElementById("premiumSection");
+      const expressBtn = document.getElementById("expressBtn");
+      const premiumBtn = document.getElementById("premiumBtn");
 
-        // Initialize checklist when the DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializeChecklist);
+      // Load saved service type
+      const savedServiceType = localStorage.getItem("serviceType");
+      if (savedServiceType) {
+        serviceSelection.style.display = "none";
+        checklistContent.style.display = "block";
+        if (savedServiceType === "premium") {
+          expressSection.style.display = "none";
+          premiumSection.style.display = "block";
+        } else {
+          expressSection.style.display = "block";
+          premiumSection.style.display = "none";
+        }
+      }
+
+      // Handle service selection
+      expressBtn.addEventListener("click", function () {
+        serviceSelection.style.display = "none";
+        checklistContent.style.display = "block";
+        expressSection.style.display = "block";
+        premiumSection.style.display = "none";
+        localStorage.setItem("serviceType", "express");
+        updateProgress();
+      });
+
+      premiumBtn.addEventListener("click", function () {
+        serviceSelection.style.display = "none";
+        checklistContent.style.display = "block";
+        expressSection.style.display = "none";
+        premiumSection.style.display = "block";
+        localStorage.setItem("serviceType", "premium");
+        updateProgress();
+      });
+
+      // Clear checked items function
+      function clearCheckedItems() {
+        const checkboxes = document.querySelectorAll(".task-checkbox:checked");
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+          const taskItem = checkbox.closest(".task-item");
+          if (taskItem) {
+            taskItem.classList.remove("completed");
+          }
+        });
+        localStorage.removeItem("checkedItems");
+        localStorage.removeItem("serviceType");
+        serviceSelection.style.display = "flex";
+        checklistContent.style.display = "none";
+        updateProgress();
+      }
+
+      // Add event listener to clear button
+      document
+        .getElementById("clearCheckedBtn2")
+        .addEventListener("click", clearCheckedItems);
+
+      // Initialize checklist when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", initializeChecklist);
     </script>
-</body>
-
+  </body>
 </html>
