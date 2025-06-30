@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dilution Calculator | Curated Cruiser</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Professional auto detailing dilution calculator for optimal product mixing ratios. A tool by Curated Cruiser in Castro Valley & San Ramon, CA.">
-    <meta name="keywords" content="auto detailing, dilution calculator, detailing ratios, car wash chemicals, Curated Cruiser">
+    <meta name="description"
+        content="Professional auto detailing dilution calculator for optimal product mixing ratios. A tool by Curated Cruiser in Castro Valley & San Ramon, CA.">
+    <meta name="keywords"
+        content="auto detailing, dilution calculator, detailing ratios, car wash chemicals, Curated Cruiser">
 
     <!-- Open Graph / Social Media Tags -->
     <meta property="og:title" content="Detailing Dilution Calculator | Curated Cruiser">
-    <meta property="og:description" content="Professional auto detailing dilution calculator for optimal product mixing ratios.">
+    <meta property="og:description"
+        content="Professional auto detailing dilution calculator for optimal product mixing ratios.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://curatedcruiser.com/dilution-calculator">
     <meta property="og:image" content="https://curatedcruiser.com/images/og-image.jpg">
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="../favicon.ico">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
             --bg-dark: #121212;
             --bg-darkgray: #1E1E1E;
             --text-lightgray: #A0A0A0;
-            --color-primary: #00B4D8; /* Accent color - bright blue */
+            --color-primary: #00B4D8;
+            /* Accent color - bright blue */
             --text-light: #f2f1ef;
         }
 
@@ -43,7 +49,11 @@
             min-height: 100vh;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-family: 'Cinzel', serif;
             margin-top: 0;
         }
@@ -148,168 +158,167 @@
         /* Calculator Section */
         #calculator {
             padding-top: 7rem;
-            background-col
 
+            background-col .calculator-card {
+                background-color: var(--bg-dark);
+                border-radius: 8px;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
 
-        .calculator-card {
-            background-color: var(--bg-dark);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+            .calculator-title {
+                text-align: center;
+                margin-bottom: 2rem;
+                color: var(--color-primary);
+            }
 
-        .calculator-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--color-primary);
-        }
+            .section-heading {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
 
-        .section-heading {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+            .accent {
+                color: var(--color-primary);
+            }
 
-        .accent {
-            color: var(--color-primary);
-        }
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+            label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+            }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
+            select,
+            input {
+                width: 100%;
+                padding: 0.75rem;
+                font-size: 1rem;
+                border-radius: 4px;
+                border: 1px solid #333;
+                background-color: var(--bg-darkgray);
+                color: var(--text-light);
+                font-family: 'Josefin Sans', sans-serif;
+            }
 
-        select, input {
-            width: 100%;
-            padding: 0.75rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            border: 1px solid #333;
-            background-color: var(--bg-darkgray);
-            color: var(--text-light);
-            font-family: 'Josefin Sans', sans-serif;
-        }
+            .tip {
+                font-size: 0.9rem;
+                color: var(--text-lightgray);
+                margin-top: 0.5rem;
+            }
 
-        .tip {
-            font-size: 0.9rem;
-            color: var(--text-lightgray);
-            margin-top: 0.5rem;
-        }
+            button {
+                background-color: var(--color-primary);
+                color: white;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-family: 'Josefin Sans', sans-serif;
+                transition: opacity 0.3s;
+                width: 100%;
+            }
 
-        button {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: 'Josefin Sans', sans-serif;
-            transition: opacity 0.3s;
-            width: 100%;
-        }
+            button:hover {
+                opacity: 0.9;
+            }
 
-        button:hover {
-            opacity: 0.9;
-        }
+            .result {
+                background-color: rgba(0, 180, 216, 0.1);
+                border-left: 4px solid var(--color-primary);
+                padding: 1.5rem;
+                margin-top: 2rem;
+                border-radius: 4px;
+                display: none;
+            }
 
-        .result {
-            background-color: rgba(0, 180, 216, 0.1);
-            border-left: 4px solid var(--color-primary);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            border-radius: 4px;
-            display: none;
-        }
+            .result h3 {
+                color: var(--color-primary);
+                margin-top: 0;
+                font-size: 1.5rem;
+            }
 
-        .result h3 {
-            color: var(--color-primary);
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
+            /* Dilution Guide */
+            .dilution-guide {
+                background-color: var(--bg-dark);
+                border-radius: 8px;
+                padding: 2rem;
+                margin-bottom: 2rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
 
-        /* Dilution Guide */
-        .dilution-guide {
-            background-color: var(--bg-dark);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+            .dilution-guide h3 {
+                margin-bottom: 1.5rem;
+            }
 
-        .dilution-guide h3 {
-            margin-bottom: 1.5rem;
-        }
+            .dilution-guide ul {
+                padding-left: 1.5rem;
+            }
 
-        .dilution-guide ul {
-            padding-left: 1.5rem;
-        }
+            .dilution-guide li {
+                margin-bottom: 0.75rem;
+            }
 
-        .dilution-guide li {
-            margin-bottom: 0.75rem;
-        }
+            .dilution-guide li strong {
+                color: var(--color-primary);
+            }
 
-        .dilution-guide li strong {
-            color: var(--color-primary);
-        }
-
-        /* Row and Columns */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -1rem;
-        }
-
-        .col {
-            flex: 1;
-            padding: 0 1rem;
-        }
-
-        @media (max-width: 768px) {
+            /* Row and Columns */
             .row {
-                flex-direction: column;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -1rem;
             }
 
             .col {
-                margin-bottom: 1rem;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--bg-dark);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        /* Mobile menu */
-        @media (max-width: 767px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                flex-direction: column;
-                background-color: var(--bg-darkgray);
-                padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
+                flex: 1;
+                padding: 0 1rem;
             }
 
-            .nav-links.active {
-                transform: translateY(0);
+            @media (max-width: 768px) {
+                .row {
+                    flex-direction: column;
+                }
+
+                .col {
+                    margin-bottom: 1rem;
+                }
             }
 
-            .menu-toggle {
-                display: block;
+            /* Footer */
+            footer {
+                background-color: var(--bg-dark);
+                padding: 2rem 0;
+                text-align: center;
             }
-        }
+
+            /* Mobile menu */
+            @media (max-width: 767px) {
+                .nav-links {
+                    position: fixed;
+                    top: 70px;
+                    left: 0;
+                    width: 100%;
+                    flex-direction: column;
+                    background-color: var(--bg-darkgray);
+                    padding: 1rem 0;
+                    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                    transform: translateY(-150%);
+                    transition: transform 0.3s ease;
+                }
+
+                .nav-links.active {
+                    transform: translateY(0);
+                }
+
+                .menu-toggle {
+                    display: block;
+                }
+            }
     </style>
 </head>
 
@@ -317,22 +326,22 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="images/curated_cruiser_logo_with_title.png" alt="Curated Cruiser Logo">
+            <a href="../index.html" class="logo">
+                <img src="../images/curated_cruiser_logo_with_title.png" alt="Curated Cruiser Logo">
             </a>
             <button class="menu-toggle" id="menu-toggle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#pricing">Pricing</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="index.html#booking" class="book-btn">Book Now</a></li>
+                <li><a href="dilution-calculator.html">Dilution Calculator</a></li>
+                <li><a href="checklist.html">Checklist</a></li>
+                <li><a href="qr-generator.html">QR Generator</a></li>
+                <li><a href="../index.html#booking" class="book-btn">Book Now</a></li>
             </ul>
         </div>
     </nav>
@@ -341,8 +350,10 @@
     <section id="calculator">
         <div class="container">
             <h2 class="section-heading">Detailing <span class="accent">Dilution</span> Calculator</h2>
-            <p class="text-center" style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Use our professional dilution calculator to determine the correct ratio of product to water for all your detailing needs.
+            <p class="text-center"
+                style="margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Use our professional dilution calculator to determine the correct ratio of product to water for all your
+                detailing needs.
                 Precise dilution ratios ensure optimal performance of your detailing products.
             </p>
 
@@ -399,7 +410,8 @@
                     <li><strong>20:1</strong> - Diluted interior cleaner (for sensitive surfaces)</li>
                     <li><strong>32:1</strong> - Quick detailers, rinseless wash, clay lubricant (ONR)</li>
                 </ul>
-                <div class="tip" style="text-align: center; margin-top: 1.5rem;">Remember: Always test products in an inconspicuous area first!</div>
+                <div class="tip" style="text-align: center; margin-top: 1.5rem;">Remember: Always test products in an
+                    inconspicuous area first!</div>
             </div>
         </div>
     </section>
@@ -496,4 +508,5 @@
         });
     </script>
 </body>
+
 </html>
