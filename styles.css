@@ -67,7 +67,7 @@ a:visited {
 }
 
 section {
-  padding: 5rem 0;
+  padding: 3rem 0;
 }
 
 .text-center { text-align: center; }
@@ -342,7 +342,7 @@ nav .container {
 
 /* Services Section */
 #services {
-  padding: 5rem 0;
+  padding: 2rem 0;
   background-color: var(--bg-dark);
 }
 
