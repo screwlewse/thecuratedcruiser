@@ -1,20 +1,25 @@
 {
-  "name": "thecuratedcruiser",
-  "version": "1.0.0",
-  "description": "My Business website",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "prettier --write \"**/*.{js,jsx,ts,tsx,css,html,md}\"",
-    "lint:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css,html,md}\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "sharp": "^0.34.1"
-  },
-  "devDependencies": {
-    "prettier": "^3.5.3"
-  }
-}
+    "name": "curated-cruiser-website",
+    "version": "1.0.0",
+    "description": "Curated Cruiser mobile auto detailing website",
+    "main": "index.html",
+    "scripts": {
+        "process-images": "node tools/image-processor.js",
+        "watch-images": "node tools/image-processor.js --watch",
+        "dev": "node tools/image-processor.js --watch"
+    },
+    "keywords": [
+        "auto-detailing",
+        "mobile-detailing",
+        "website"
+    ],
+    "author": "Dave - Curated Cruiser",
+    "license": "MIT",
+    "dependencies": {
+        "sharp": "^0.33.0"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": ">=14.0.0"
+    }
+} 
