@@ -13,392 +13,766 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Josefin+Sans:ital@0;1&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Josefin+Sans:wght@400;500;700&display=swap"
         rel="stylesheet">
 
-    <!-- Chota CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chota/0.8.0/chota.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles.css">
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="tools-base.css">
 
     <!-- QR Code Library -->
     <script src="qrcode.js"></script>
 
     <style>
-        .qr-container {
+        body {
+            font-family: 'Josefin Sans', Arial, sans-serif;
+        }
+
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .qr-section {
             max-width: 800px;
             margin: 0 auto;
-            padding: 2rem;
         }
 
-        .qr-form {
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .qr-intro {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
         }
 
-        .qr-input-group {
-            margin-bottom: 1.5rem;
+        .qr-intro h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
         }
 
-        .qr-input-group label {
+        .qr-intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .qr-form-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
             display: block;
-            margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--text-primary);
-        }
-
-        .qr-input-group input,
-        .qr-input-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
+            margin-bottom: var(--spacing-sm);
             font-size: 1rem;
-            background: var(--bg-primary);
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
+            transition: all var(--transition-fast);
         }
 
-        .qr-input-group input:focus,
-        .qr-input-group select:focus {
+        .form-input:focus,
+        .form-select:focus {
             outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgb(14 165 233 / 0.1);
         }
 
-        .qr-button {
-            background: var(--accent-color);
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
         }
 
-        .qr-button:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .qr-button:disabled {
-            background: var(--text-muted);
+        .generate-btn:disabled {
+            background: var(--gray-400);
             cursor: not-allowed;
             transform: none;
         }
 
-        .qr-result {
+        .generate-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .qr-result-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .result-header svg {
+            width: 24px;
+            height: 24px;
+            color: var(--success-500);
+        }
+
+        .result-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .qr-display {
             text-align: center;
-            background: var(--bg-secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: var(--spacing-xl) 0;
         }
 
         .qr-canvas {
-            margin: 1rem auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            background: white;
+            padding: var(--spacing-lg);
         }
 
-        .qr-download {
-            margin-top: 1rem;
+        .qr-download-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-xl);
         }
 
-        .qr-download-btn {
-            background: var(--success-color, #10b981);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
+        .download-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: 500;
             cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
             text-decoration: none;
-            display: inline-block;
-            margin: 0.5rem;
-            transition: all 0.2s ease;
         }
 
-        .qr-download-btn:hover {
-            background: var(--success-hover, #059669);
-            transform: translateY(-1px);
+        .download-btn:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--primary-300);
+            color: var(--primary-700);
         }
 
-        .qr-error {
-            color: var(--error-color, #ef4444);
-            background: rgba(239, 68, 68, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
+        .download-btn svg {
+            width: 16px;
+            height: 16px;
         }
 
-        .qr-success {
-            color: var(--success-color, #10b981);
-            background: rgba(16, 185, 129, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
+        .error-message {
+            background: var(--error-500);
+            color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-lg);
+            font-weight: 500;
+            display: none;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
-            text-decoration: none;
+        .success-message {
+            background: var(--success-500);
+            color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-lg);
+            font-weight: 500;
+            display: none;
+        }
+
+        .qr-info {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--border-light);
+        }
+
+        .info-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        @media (min-width: 768px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .info-item {
+            padding: var(--spacing-lg);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: var(--bg-primary);
+        }
+
+        .info-item h4 {
             font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
         }
 
-        .back-link:hover {
-            text-decoration: underline;
+        .info-item h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary-600);
         }
 
-        .back-link svg {
-            margin-right: 0.5rem;
+        .info-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <a href="../index.html" class="logo">
-                <img src="../images/curated_cruiser_logo_with_title.png" alt="Curated Cruiser Logo">
-            </a>
-            <button class="menu-toggle" id="menu-toggle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="dilution-calculator.html">Dilution Calculator</a></li>
-                <li><a href="checklist.html">Checklist</a></li>
-                <li><a href="qr-generator.html">QR Generator</a></li>
-                <li>
-                    <a href="https://app.squareup.com/appointments/book/tuqnxp2qpi0ep8/L44YJCFYRBY6D/start"
-                        class="book-btn">Book a Detail Now</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="qr-container">
-        <a href="../index.html" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12,19 5,12 12,5"></polyline>
-            </svg>
-            Back to Home
-        </a>
-
-        <h1>QR Code Generator</h1>
-        <p class="text-muted">Create QR codes for any URL or text content</p>
-
-        <div class="qr-form">
-            <div class="qr-input-group">
-                <label for="qr-text">Enter URL or Text:</label>
-                <input type="text" id="qr-text" placeholder="https://example.com or any text content" required>
+    <div class="tools-layout">
+        <!-- Sidebar -->
+        <aside class="tools-sidebar">
+            <div class="sidebar-header">
+                <a href="../index.html" class="sidebar-logo">
+                    <img src="../img/curated_cruiser_logo_with_title.png" alt="Curated Cruiser">
+                    <span>Tools</span>
+                </a>
+                <button class="sidebar-close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
 
-            <div class="qr-input-group">
-                <label for="qr-size">QR Code Size:</label>
-                <select id="qr-size">
-                    <option value="128">Small (128x128)</option>
-                    <option value="256" selected>Medium (256x256)</option>
-                    <option value="512">Large (512x512)</option>
-                </select>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Tools</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dilution-calculator.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M2 12h20"></path>
+                                    <path d="M12 2a10 10 0 0 1 10 10"></path>
+                                    <path d="M12 2a10 10 0 0 0-10 10"></path>
+                                </svg>
+                                Dilution Calculator
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="checklist.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"></path>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                Detailing Checklist
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="qr-generator.html" class="nav-link active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <path d="M10 10h4v4h-4z"></path>
+                                </svg>
+                                QR Generator
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Quick Actions</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="https://app.squareup.com/appointments/book/tuqnxp2qpi0ep8/L44YJCFYRBY6D/start"
+                                class="nav-link" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                Book Appointment
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 12H5M12 19l-7-7 7-7"></path>
+                                </svg>
+                                Back to Website
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Mobile Overlay -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- Main Content -->
+        <main class="tools-main">
+            <header class="tools-header">
+                <button class="menu-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <h1 class="page-title">QR Code Generator</h1>
+                <div></div> <!-- Spacer for flexbox -->
+            </header>
+
+            <div class="tools-content">
+                <div class="qr-section">
+                    <!-- QR Intro -->
+                    <div class="qr-intro">
+                        <h2>QR Code Generator</h2>
+                        <p>Create QR codes for any URL or text content instantly. Download as PNG or SVG for use in
+                            marketing materials.</p>
+                    </div>
+
+                    <!-- QR Form -->
+                    <div class="qr-form-card">
+                        <form id="qrForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="qrContent" class="form-label">Content</label>
+                                    <input type="text" id="qrContent" class="form-input"
+                                        placeholder="Enter URL or text..." required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="qrSize" class="form-label">Size</label>
+                                    <select id="qrSize" class="form-select">
+                                        <option value="200">Small (200x200)</option>
+                                        <option value="300" selected>Medium (300x300)</option>
+                                        <option value="400">Large (400x400)</option>
+                                        <option value="500">Extra Large (500x500)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" id="generateBtn" class="generate-btn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2v20M2 12h20"></path>
+                                    <path d="M12 2a10 10 0 0 1 10 10"></path>
+                                    <path d="M12 2a10 10 0 0 0-10 10"></path>
+                                </svg>
+                                Generate QR Code
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- QR Result -->
+                    <div id="qrResult" class="qr-result-card">
+                        <div class="result-header">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 11l3 3L22 4"></path>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                            <h3 class="result-title">Your QR Code</h3>
+                        </div>
+
+                        <div class="qr-display">
+                            <div id="qrCanvas" class="qr-canvas"></div>
+                        </div>
+
+                        <div class="qr-download-section">
+                            <button class="download-btn" id="downloadPng">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7,10 12,15 17,10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download PNG
+                            </button>
+                            <button class="download-btn" id="downloadSvg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7,10 12,15 17,10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download SVG
+                            </button>
+                            <button class="download-btn" id="copyLink">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Copy Link
+                            </button>
+                        </div>
+
+                        <div id="errorMessage" class="error-message"></div>
+                        <div id="successMessage" class="success-message"></div>
+                    </div>
+
+                    <!-- QR Info -->
+                    <div class="qr-info">
+                        <h3 class="info-title">About QR Codes</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                                    </svg>
+                                    Fast & Easy
+                                </h4>
+                                <p>Generate QR codes instantly for any URL or text content. Perfect for marketing
+                                    materials and business cards.</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="7,10 12,15 17,10"></polyline>
+                                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                                    </svg>
+                                    Multiple Formats
+                                </h4>
+                                <p>Download your QR codes as PNG or SVG files. PNG for web use, SVG for scalable
+                                    graphics.</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2v20M2 12h20"></path>
+                                        <path d="M12 2a10 10 0 0 1 10 10"></path>
+                                        <path d="M12 2a10 10 0 0 0-10 10"></path>
+                                    </svg>
+                                    Customizable Size
+                                </h4>
+                                <p>Choose from multiple sizes to fit your needs. From small business cards to large
+                                    posters.</p>
+                            </div>
+                            <div class="info-item">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    Secure & Reliable
+                                </h4>
+                                <p>All QR codes are generated locally in your browser. No data is sent to external
+                                    servers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="qr-input-group">
-                <label for="qr-error-correction">Error Correction Level:</label>
-                <select id="qr-error-correction">
-                    <option value="L">Low (7%)</option>
-                    <option value="M" selected>Medium (15%)</option>
-                    <option value="Q">Quartile (25%)</option>
-                    <option value="H">High (30%)</option>
-                </select>
-            </div>
-
-            <button type="button" class="qr-button" id="generate-btn">Generate QR Code</button>
-        </div>
-
-        <div class="qr-result" id="qr-result" style="display: none;">
-            <h3>Your QR Code</h3>
-            <div id="qr-canvas" class="qr-canvas"></div>
-            <div class="qr-download">
-                <a href="#" class="qr-download-btn" id="download-png">Download PNG</a>
-                <a href="#" class="qr-download-btn" id="download-svg">Download SVG</a>
-            </div>
-        </div>
-
-        <div id="qr-message"></div>
+        </main>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/curated_cruiser/" class="social-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                </a>
-            </div>
+    <!-- Base JavaScript -->
+    <script src="tools-base.js"></script>
 
-            <p>© 2025 Curated Cruiser. All rights reserved.</p>
-            <p class="text-lightgray">Mobile Auto Detailing in Castro Valley and San Ramon, CA</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="../mobile.js"></script>
-
+    <!-- QR Generator JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const qrText = document.getElementById('qr-text');
-            const qrSize = document.getElementById('qr-size');
-            const qrErrorCorrection = document.getElementById('qr-error-correction');
-            const generateBtn = document.getElementById('generate-btn');
-            const qrResult = document.getElementById('qr-result');
-            const qrCanvas = document.getElementById('qr-canvas');
-            const qrMessage = document.getElementById('qr-message');
-            const downloadPng = document.getElementById('download-png');
-            const downloadSvg = document.getElementById('download-svg');
+            const qrContent = document.getElementById('qrContent');
+            const qrSize = document.getElementById('qrSize');
+            const generateBtn = document.getElementById('generateBtn');
+            const qrResult = document.getElementById('qrResult');
+            const qrCanvas = document.getElementById('qrCanvas');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            const downloadPng = document.getElementById('downloadPng');
+            const downloadSvg = document.getElementById('downloadSvg');
+            const copyLink = document.getElementById('copyLink');
 
             let currentQrData = null;
 
             // Check if QRCode library is loaded
             if (typeof QRCode === 'undefined') {
-                showMessage('QR Code library failed to load. Please refresh the page.', 'error');
+                showError('QR Code library failed to load. Please refresh the page.');
                 generateBtn.disabled = true;
                 return;
             }
 
-            // Test QR code generation
             console.log('QRCode library loaded successfully');
-            console.log('QRCode version:', QRCode.version || 'unknown');
+            console.log('QRCode object:', QRCode);
+            console.log('QRCode.CorrectLevel:', QRCode.CorrectLevel);
 
             // Generate QR Code
-            function generateQRCode() {
-                const text = qrText.value.trim();
+            function generateQR() {
+                const content = qrContent.value.trim();
                 const size = parseInt(qrSize.value);
-                const errorCorrection = qrErrorCorrection.value;
 
-                if (!text) {
-                    showMessage('Please enter some text or a URL', 'error');
+                console.log('Generating QR code with:', { content, size });
+
+                if (!content) {
+                    showError('Please enter some content for the QR code.');
                     return;
                 }
 
                 // Validate URL format if it looks like a URL
-                if (text.includes('http') && !isValidUrl(text)) {
-                    showMessage('Please enter a valid URL (e.g., https://example.com)', 'error');
+                if (content.includes('http') && !isValidUrl(content)) {
+                    showError('Please enter a valid URL (e.g., https://example.com)');
                     return;
                 }
 
                 generateBtn.disabled = true;
-                generateBtn.textContent = 'Generating...';
+                generateBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M2 12h20"></path>
+                        <path d="M12 2a10 10 0 0 1 10 10"></path>
+                        <path d="M12 2a10 10 0 0 0-10 10"></path>
+                    </svg>
+                    Generating...
+                `;
 
                 try {
                     // Clear previous QR code
                     qrCanvas.innerHTML = '';
+                    console.log('Cleared canvas, canvas element:', qrCanvas);
 
-                    // Create QR code using the vanilla JS library
-                    const qrcode = new QRCode(qrCanvas, {
-                        text: text,
+                    // Create QR code using the library
+                    console.log('Creating QR code with options:', {
+                        text: content,
                         width: size,
                         height: size,
                         colorDark: "#000000",
                         colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel[errorCorrection]
+                        correctLevel: QRCode.CorrectLevel.H
                     });
 
+                    const qrcode = new QRCode(qrCanvas, {
+                        text: content,
+                        width: size,
+                        height: size,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+
+                    console.log('QR code created:', qrcode);
+                    console.log('Canvas content after creation:', qrCanvas.innerHTML);
+
                     currentQrData = {
-                        text: text,
+                        text: content,
                         size: size,
-                        errorCorrection: errorCorrection,
                         qrcode: qrcode
                     };
 
                     qrResult.style.display = 'block';
-                    showMessage('QR code generated successfully!', 'success');
-                    updateDownloadLinks();
+                    showSuccess('QR code generated successfully!');
+
+                    // Scroll to result
+                    qrResult.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
 
                 } catch (error) {
                     console.error('QR Code generation error:', error);
-                    showMessage('Error generating QR code: ' + error.message, 'error');
+                    showError('Error generating QR code. Please try again.');
                 } finally {
                     generateBtn.disabled = false;
-                    generateBtn.textContent = 'Generate QR Code';
+                    generateBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"></path>
+                            <path d="M12 2a10 10 0 0 1 10 10"></path>
+                            <path d="M12 2a10 10 0 0 0-10 10"></path>
+                        </svg>
+                        Generate QR Code
+                    `;
                 }
             }
 
-            // Update download links
-            function updateDownloadLinks() {
-                if (!currentQrData) return;
+            // Download PNG
+            function downloadPNG() {
+                if (!currentQrData) {
+                    showError('Please generate a QR code first.');
+                    return;
+                }
 
-                // PNG download
-                downloadPng.onclick = function (e) {
-                    e.preventDefault();
-                    try {
-                        // Get the QR code image element
-                        const qrImage = qrCanvas.querySelector('img');
-                        if (qrImage) {
-                            const link = document.createElement('a');
-                            link.download = 'qr-code.png';
-                            link.href = qrImage.src;
-                            link.click();
-                        } else {
-                            showMessage('QR code image not found', 'error');
-                        }
-                    } catch (error) {
-                        showMessage('Error downloading PNG: ' + error.message, 'error');
+                try {
+                    // Get the QR code image element
+                    const qrImage = qrCanvas.querySelector('img');
+                    if (qrImage) {
+                        const link = document.createElement('a');
+                        link.download = `qr-code-${Date.now()}.png`;
+                        link.href = qrImage.src;
+                        link.click();
+                        showSuccess('PNG downloaded successfully!');
+                    } else {
+                        showError('QR code image not found');
                     }
-                };
+                } catch (error) {
+                    showError('Error downloading PNG. Please try again.');
+                    console.error('PNG Download Error:', error);
+                }
+            }
 
-                // SVG download - this library doesn't support SVG, so we'll create a simple SVG
-                downloadSvg.onclick = function (e) {
-                    e.preventDefault();
-                    try {
-                        // Create a simple SVG representation
-                        const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+            // Download SVG
+            function downloadSVG() {
+                if (!currentQrData) {
+                    showError('Please generate a QR code first.');
+                    return;
+                }
+
+                try {
+                    // Create a simple SVG representation
+                    const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${currentQrData.size}" height="${currentQrData.size}" xmlns="http://www.w3.org/2000/svg">
     <rect width="100%" height="100%" fill="white"/>
     <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="black">QR Code</text>
     <text x="50%" y="70%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="8" fill="gray">${currentQrData.text}</text>
 </svg>`;
 
-                        const blob = new Blob([svgContent], { type: 'image/svg+xml' });
-                        const url = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.download = 'qr-code.svg';
-                        link.href = url;
-                        link.click();
-                        URL.revokeObjectURL(url);
-                    } catch (error) {
-                        showMessage('Error downloading SVG: ' + error.message, 'error');
-                    }
-                };
+                    const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = `qr-code-${Date.now()}.svg`;
+                    link.href = url;
+                    link.click();
+                    URL.revokeObjectURL(url);
+                    showSuccess('SVG downloaded successfully!');
+                } catch (error) {
+                    showError('Error downloading SVG. Please try again.');
+                    console.error('SVG Download Error:', error);
+                }
             }
 
-            // Show message
-            function showMessage(message, type) {
-                qrMessage.innerHTML = `<div class="qr-${type}">${message}</div>`;
+            // Copy link
+            function copyLinkToClipboard() {
+                if (!currentQrData) {
+                    showError('Please generate a QR code first.');
+                    return;
+                }
+
+                navigator.clipboard.writeText(currentQrData.text).then(() => {
+                    showSuccess('Content copied to clipboard!');
+                }).catch(() => {
+                    showError('Failed to copy to clipboard. Please try again.');
+                });
+            }
+
+            // Show error message
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+
                 setTimeout(() => {
-                    qrMessage.innerHTML = '';
+                    errorMessage.style.display = 'none';
                 }, 5000);
+            }
+
+            // Show success message
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
             }
 
             // Validate URL
@@ -412,20 +786,19 @@
             }
 
             // Event listeners
-            generateBtn.addEventListener('click', generateQRCode);
-
-            qrText.addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') {
-                    generateQRCode();
-                }
+            document.getElementById('qrForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                generateQR();
             });
 
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const navLinks = document.getElementById('nav-links');
+            downloadPng.addEventListener('click', downloadPNG);
+            downloadSvg.addEventListener('click', downloadSVG);
+            copyLink.addEventListener('click', copyLinkToClipboard);
 
-            menuToggle.addEventListener('click', function () {
-                navLinks.classList.toggle('active');
+            qrContent.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    generateQR();
+                }
             });
         });
     </script>
