@@ -309,6 +309,17 @@ nav .container {
   opacity: 0.8;
 }
 
+/* Hero Section Layout */
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
 .hero-image {
   flex: 1;
 }
