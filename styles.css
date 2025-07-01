@@ -77,8 +77,8 @@ section {
 .mb-2 { margin-bottom: 2rem; }
 
 .py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 /* 4. Components */
@@ -119,11 +119,20 @@ section {
 }
 
 /* Lists */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .service-list li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.4rem;
+  padding-left: 0;
   color: var(--text-lightgray);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .nav-links li:last-child {
@@ -140,8 +149,18 @@ section {
 }
 
 /* Headers */
+.card-header {
+  background-color: var(--bg-dark);
+  border-radius: 8px 8px 0 0;
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bg-darkgray);
+}
+
 .card-header h3 {
+  font-size: 1.6rem;
   margin-bottom: 0.25rem;
+  margin-top: 0;
   color: var(--color-primary);
 }
 
@@ -274,27 +293,18 @@ nav .container {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
-  background-color: rgb(0 0 0 / 50%);
-}
-
-.card-header {
-  background-color: var(--bg-dark);
-  border-radius: 8px 8px 0 0;
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid var(--bg-darkgray);
 }
 
 .card-body {
   background-color: var(--bg-dark);
-  padding: 1.5rem;
+  padding: 1.5rem 1.75rem;
   flex: 1;
 }
 
 .card-footer {
   background-color: var(--color-primary);
   border-radius: 0 0 8px 8px;
-  padding: 1rem;
+  padding: 1.25rem;
   text-align: center;
   margin: 0 0 0.5rem;
 }
@@ -340,7 +350,7 @@ nav .container {
   text-align: center;
   font-family: var(--font-family-title);
   font-size: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 #services .mb-2 {
@@ -533,7 +543,7 @@ footer {
   }
 
   .pricing-card {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 }
 
@@ -691,4 +701,79 @@ footer {
   .container {
     padding: 0 1rem;
   }
+}
+
+/* --- Pricing Card Improvements --- */
+.card-subtitle,
+.time-estimate,
+.vehicle-type,
+.price,
+.original-price,
+.discounted-price,
+.service-list li,
+.price-list,
+.price-item {
+    font-size: 1.1rem;
+}
+
+.card-header {
+    padding: 1.5rem 1.75rem;
+}
+
+.card-body {
+    padding: 1rem 1.25rem;
+}
+
+.price-list {
+    gap: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.price-item {
+    padding: 0.5rem 0;
+    gap: 0.3rem;
+}
+
+.checkbox-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 3px;
+    color: var(--bg-darkgray);
+    font-size: 0.8em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.price-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.price-list ul li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.2em 0;
+}
+
+.price-list ul li .original-price,
+.price-list ul li .discounted-price {
+    min-width: 3.5em;
+    display: inline-block;
+    text-align: right;
+}
+
+.price-list ul li .original-price {
+    margin-right: 0.5em;
+}
+
+.price-list ul li .discounted-price {
+    font-weight: bold;
 }
