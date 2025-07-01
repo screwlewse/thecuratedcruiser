@@ -563,48 +563,37 @@
                 "Gather supplies"
             ],
             "express-interior": [
-                "Vacuum all surfaces",
+                "Clean and condition floor mats",
+                "Blow and vacuum carpet and seats",
                 "Clean dashboard and console",
                 "Wipe down door panels",
                 "Clean windows and mirrors",
-                "Dress tires (if included)",
-                "Final inspection"
+                "Treat vinyl and plastic surfaces",
             ],
             "express-exterior": [
-                "Rinse vehicle",
-                "Wash with soap",
-                "Rinse thoroughly",
-                "Dry with microfiber",
-                "Clean windows",
-                "Dress tires",
-                "Final inspection"
+                "Clean wheels and tires",
+                "Spray degreaser",
+                "Apply foam wash and rinse",
+                "Hand wash vehicle",
+                "Apply spray wax (express only)",
+                "Blow/Towel dry",
+                "Clean exterior windows",
+                "Dress tires and trim"
             ],
             "premium-interior": [
-                "Remove all items from vehicle",
-                "Vacuum all surfaces thoroughly",
-                "Clean dashboard and console",
-                "Clean and condition leather",
-                "Clean door panels and handles",
-                "Clean seats and upholstery",
-                "Clean floor mats",
-                "Clean trunk/cargo area",
-                "Clean windows and mirrors",
-                "Apply protectant to surfaces",
-                "Final inspection"
+                "Deep clean air vents and crevices",
+                "Condition and protect leather",
+                "Shampoo/clean carpet and fabric seats",
+                "Steam clean hard-to-reach areas",
+                "Apply premium protection",
+                "Spray air freshener"
             ],
             "premium-exterior": [
-                "Rinse vehicle",
-                "Apply wheel cleaner",
-                "Wash wheels and tires",
-                "Rinse wheels",
-                "Wash vehicle with soap",
-                "Clay bar treatment",
-                "Rinse thoroughly",
-                "Dry with microfiber",
-                "Apply wax or sealant",
-                "Clean windows",
-                "Dress tires",
-                "Final inspection"
+                "Clay treatment",
+                "Machine polish paint",
+                "Apply premium sealant (premium only)",
+                "Restore faded trim",
+                "Polish chrome and metal trim"
             ]
         };
 
@@ -663,11 +652,22 @@
                     const container = document.getElementById(sectionId);
                     container.innerHTML = '';
 
-                    checklistData[sectionId].forEach(task => {
+                    const tasks = this.getTasksForSection(sectionId);
+                    tasks.forEach(task => {
                         const taskItem = this.createTaskItem(task, sectionId);
                         container.appendChild(taskItem);
                     });
                 });
+            }
+
+            getTasksForSection(sectionId) {
+                if (sectionId === 'premium-interior') {
+                    return [...checklistData['express-interior'], ...checklistData['premium-interior']];
+                } else if (sectionId === 'premium-exterior') {
+                    return [...checklistData['express-exterior'], ...checklistData['premium-exterior']];
+                } else {
+                    return checklistData[sectionId];
+                }
             }
 
             createTaskItem(task, sectionId) {
@@ -731,7 +731,7 @@
                 }
 
                 return sections.reduce((total, sectionId) => {
-                    return total + checklistData[sectionId].length;
+                    return total + this.getTasksForSection(sectionId).length;
                 }, 0);
             }
 
