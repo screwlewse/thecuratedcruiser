@@ -729,16 +729,8 @@ footer {
 }
 
 .checkbox-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.2em;
-    height: 1.2em;
-    background-color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    border-radius: 3px;
-    color: var(--bg-darkgray);
-    font-size: 0.8em;
+    color: var(--color-primary);
+    font-size: 1.1em;
     font-weight: bold;
     flex-shrink: 0;
 }
