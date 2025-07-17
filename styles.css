@@ -847,3 +847,17 @@ footer {
 .blue-price {
     color: #0074d9;
 }
+
+.closed-banner {
+  background-color: #ff4444;
+  color: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 1rem 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: calc(4.5rem + 20px);
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid #b71c1c;
+  z-index: 1000;
+}
