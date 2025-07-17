@@ -5,3 +5,6 @@ thecuratedcruiser/.trunk/
 
 # Keep processed images for GitHub Pages deployment
 # img/processed/
+
+# Gallery raw images (should never be committed)
+gallery-raw/

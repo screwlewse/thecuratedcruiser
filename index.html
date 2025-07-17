@@ -35,6 +35,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+
     <script defer data-domain="curatedcruiser.com" src="https://plausible.io/js/script.outbound-links.js"></script>
     <script>
         window.plausible =
@@ -43,6 +47,9 @@
                 (window.plausible.q = window.plausible.q || []).push(arguments);
             };
     </script>
+
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 </head>
 
 <body>
@@ -61,8 +68,8 @@
                 </svg>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#services">Promotion</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li>
                     <a href="https://app.squareup.com/appointments/book/tuqnxp2qpi0ep8/L44YJCFYRBY6D/start"
                         class="book-btn">Book a Detail Now</a>
@@ -117,113 +124,7 @@
     </section>
 
     <!-- Services Section with Friends and Family Promotion -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-heading">
-                Grand Opening Special! <br />
-                <span class="accent">50% OFF All Services!</span>
-            </h2>
-            <p class="mb-2">
-                To celebrate my grand opening, I'm offering all my premium detailing
-                services at half price. In exchange, I only ask for your honest Google
-                review!
-            </p>
-
-            <div class="promotion-container">
-                <!-- Grand Opening Promotion -->
-                <div class="promotion-card">
-                    <ul class="promotion-list">
-                        <li>
-                            <span>
-                                <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <span>All services at <strong>50% OFF</strong> in exchange for your
-                                Google review</span>
-                        </li>
-                        <li>
-                            <span>
-                                <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <span>Same premium quality service at half the price</span>
-                        </li>
-                        <li>
-                            <span>
-                                <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <span>Your review helps me offer this special pricing to more
-                                customers</span>
-                        </li>
-                        <li>
-                            <span>
-                                <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </span>
-                            <span>Limited-time grand opening offer!</span>
-                        </li>
-                    </ul>
-
-                    <div class="promotion-section">
-                        <h4>How It Works</h4>
-                        <p>1. Book your service online or text me at <span class="phone">(510) 417-1283</span></p>
-                        <p>
-                            2. I'll come to your location and detail your vehicle at the scheduled time.
-                        </p>
-                        <p>3. Pay for the service at half the regular price!</p>
-                        <p>4. Share your experience with a Google review</p>
-                        <p class="promotion-note">
-                            *The 50% discount is my way of saying thank you for helping me
-                            build my reputation with your review!
-                        </p>
-                    </div>
-
-                    <div class="promotion-section">
-                        <h4>Why Your Google Review Matters</h4>
-                        <p>
-                            As a new business owner, your Google review is incredibly
-                            valuable to me. It helps me build my reputation and allows me to
-                            offer these amazing half-price services to more customers in
-                            Castro Valley and San Ramon.
-                        </p>
-                        <p>
-                            Think of it as a win-win: you get premium detailing at half
-                            price, and I get the opportunity to grow my business through
-                            your honest feedback!
-                        </p>
-                    </div>
-
-                    <div class="promotion-cta">
-                        <p>Ready to experience premium detailing at half price?</p>
-                        <p>Text me at <span class="phone">(510) 417-1283</span></p>
-                        <p>
-                            Let me know your preferred day and I'll get back to you
-                            promptly!
-                        </p>
-                    </div>
-
-                    <p class="promotion-note">
-                        *Grand opening special available for a limited time to residents
-                        in Castro Valley and San Ramon. 50% discount requires a Google
-                        review.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Entire grand opening special section removed -->
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-20">
@@ -259,12 +160,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$200</span> <span
-                                            class="discounted-price">$100</span></li>
-                                    <li>SUV/Truck <span class="original-price">$250</span> <span
-                                            class="discounted-price">$125</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$300</span> <span
-                                            class="discounted-price">$150</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$200</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$250</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$300</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -304,12 +202,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$475</span> <span
-                                            class="discounted-price">$238</span></li>
-                                    <li>SUV/Truck <span class="original-price">$550</span> <span
-                                            class="discounted-price">$275</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$600</span> <span
-                                            class="discounted-price">$300</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$475</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$550</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$600</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -393,12 +288,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$100</span> <span
-                                            class="discounted-price">$50</span></li>
-                                    <li>SUV/Truck <span class="original-price">$125</span> <span
-                                            class="discounted-price">$63</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$150</span> <span
-                                            class="discounted-price">$75</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$100</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$125</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$150</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -428,12 +320,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$100</span> <span
-                                            class="discounted-price">$50</span></li>
-                                    <li>SUV/Truck <span class="original-price">$125</span> <span
-                                            class="discounted-price">$63</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$150</span> <span
-                                            class="discounted-price">$75</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$100</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$125</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$150</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -464,12 +353,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$235</span> <span
-                                            class="discounted-price">$118</span></li>
-                                    <li>SUV/Truck <span class="original-price">$275</span> <span
-                                            class="discounted-price">$138</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$300</span> <span
-                                            class="discounted-price">$150</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$235</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$275</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$300</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -501,12 +387,9 @@
                         <div class="price-list">
                             <div class="price-item">
                                 <ul>
-                                    <li>Sedan <span class="original-price">$240</span> <span
-                                            class="discounted-price">$120</span></li>
-                                    <li>SUV/Truck <span class="original-price">$275</span> <span
-                                            class="discounted-price">$138</span></li>
-                                    <li>3-row SUV/Van <span class="original-price">$300</span> <span
-                                            class="discounted-price">$150</span></li>
+                                    <li>Sedan <span class="normal-price blue-price">$240</span></li>
+                                    <li>SUV/Truck <span class="normal-price blue-price">$275</span></li>
+                                    <li>3-row SUV/Van <span class="normal-price blue-price">$300</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -630,6 +513,40 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+        <div class="container">
+            <h2 class="section-heading"><span class="accent">Gallery</span></h2>
+
+            <!-- Vehicle Gallery: Grey BMW X3 -->
+            <div class="gallery-section">
+                <h3 class="gallery-title">Grey BMW X3 - Complete Detail</h3>
+                <div class="gallery-grid">
+                    <a href="gallery/grey-bmw-x3/full/grey-bmw-x3-1.jpg" data-fancybox="grey-bmw-x3">
+                        <img src="gallery/grey-bmw-x3/thumbnails/grey-bmw-x3-1.jpg" alt="Grey BMW X3 Detail 1"
+                            loading="lazy">
+                    </a>
+                    <a href="gallery/grey-bmw-x3/full/grey-bmw-x3-2.jpg" data-fancybox="grey-bmw-x3">
+                        <img src="gallery/grey-bmw-x3/thumbnails/grey-bmw-x3-2.jpg" alt="Grey BMW X3 Detail 2"
+                            loading="lazy">
+                    </a>
+                    <a href="gallery/grey-bmw-x3/full/grey-bmw-x3-3.jpg" data-fancybox="grey-bmw-x3">
+                        <img src="gallery/grey-bmw-x3/thumbnails/grey-bmw-x3-3.jpg" alt="Grey BMW X3 Detail 3"
+                            loading="lazy">
+                    </a>
+                    <a href="gallery/grey-bmw-x3/full/grey-bmw-x3-4.jpg" data-fancybox="grey-bmw-x3">
+                        <img src="gallery/grey-bmw-x3/thumbnails/grey-bmw-x3-4.jpg" alt="Grey BMW X3 Detail 4"
+                            loading="lazy">
+                    </a>
+                    <a href="gallery/grey-bmw-x3/full/grey-bmw-x3-5.jpg" data-fancybox="grey-bmw-x3">
+                        <img src="gallery/grey-bmw-x3/thumbnails/grey-bmw-x3-5.jpg" alt="Grey BMW X3 Detail 5"
+                            loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -686,6 +603,24 @@
 
     <!-- JavaScript -->
     <script src="mobile.js"></script>
+
+    <!-- Fancybox Configuration -->
+    <script>
+        // Simple Fancybox initialization with minimal configuration
+        Fancybox.bind("[data-fancybox]", {
+            // Only show essential controls
+            buttons: [
+                "prev",
+                "next",
+                "close"
+            ],
+            // Disable unwanted features
+            wheel: false,
+            dragToClose: false,
+            clickToClose: false,
+            dblclickToZoom: false,
+        });
+    </script>
 </body>
 
 </html>

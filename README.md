@@ -1,6 +1,64 @@
-# Curated Cruiser Website
+# Curated Cruiser - Mobile Auto Detailing
 
-Professional mobile auto detailing website for Castro Valley and San Ramon, CA.
+Professional mobile auto detailing services in Castro Valley and San Ramon, CA.
+
+## Gallery Image Processing
+
+This project includes an automated tool for processing gallery images for the vehicle galleries.
+
+### How to Use
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Create your input structure:**
+   - Create a `gallery-raw` folder in the project root
+   - Add vehicle folders inside `gallery-raw` (e.g., `gallery-raw/silver-audi-a4/`)
+   - Place your images inside each vehicle folder
+
+3. **Run the processing script:**
+   ```bash
+   npm run process-gallery
+   ```
+
+4. **Clean up:** Delete the original images from `gallery-raw/` after processing
+
+### What the Script Does
+
+The script will:
+- Rename images to lowercase with vehicle prefix + sequence (e.g., `silver-audi-a4-1.jpg`)
+- Convert JPEG extensions to JPG
+- Create thumbnails (300px wide)
+- Create optimized full-size images (max 1200px wide)
+- Organize images into `gallery/[vehicle-name]/full/` and `gallery/[vehicle-name]/thumbnails/`
+
+### Example Structure
+
+```
+gallery-raw/                    # Your input folder
+├── silver-audi-a4/
+│   ├── IMG_001.JPEG
+│   ├── IMG_002.JPEG
+│   └── ...
+└── black-bmw-3series/
+    ├── photo1.jpg
+    └── ...
+
+# After processing:
+gallery/                        # Generated output
+├── silver-audi-a4/
+│   ├── full/                   # Full-size images
+│   │   ├── silver-audi-a4-1.jpg
+│   │   └── ...
+│   └── thumbnails/             # Thumbnail images
+│       ├── silver-audi-a4-1.jpg
+│       └── ...
+└── black-bmw-3series/
+    ├── full/
+    └── thumbnails/
+```
 
 ## Image Processing
 
