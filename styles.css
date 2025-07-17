@@ -562,11 +562,11 @@ nav .container {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 0.75rem;
     }
-    
+
     .gallery-grid img {
         height: 130px;
     }
-    
+
     .gallery-title {
         font-size: 1.25rem;
     }
@@ -577,7 +577,7 @@ nav .container {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 0.5rem;
     }
-    
+
     .gallery-grid img {
         height: 100px;
     }
@@ -856,7 +856,7 @@ footer {
   font-weight: bold;
   padding: 1rem 0.5rem;
   margin-bottom: 1.5rem;
-  margin-top: calc(4.5rem + 20px);
+  margin-top: 4.7rem;
   letter-spacing: 0.5px;
   border-bottom: 3px solid #b71c1c;
   z-index: 1000;
